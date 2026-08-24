@@ -30,7 +30,7 @@ jobs:
       - name: Set up Rust with the Android target
         uses: dtolnay/rust-toolchain@stable
         with:
-          targets: aarch64-linux-android, armv7-linux-androideabi, x86_64-linux-android, i686-linux-android
+          targets: aarch64-linux-android
 
       - name: Cache cargo
         uses: actions/cache@v4
@@ -56,14 +56,14 @@ jobs:
           echo "ANDROID_NDK_HOME=$ANDROID_HOME/ndk/$version" >> "$GITHUB_ENV"
           echo "using ndk $version"
 
-      - name: Build universal debug APK (arm64 + armv7 + x86_64)
+      - name: Build arm64 APK (split per ABI, smaller download)
         run: |
           flutter pub get
-          flutter build apk --debug --target-platform android-arm64,android-arm,android-x64
+          flutter build apk --debug --target-platform android-arm64 --split-per-abi
 
       - name: Verify the core is bundled
         run: |
-          apk=build/app/outputs/flutter-apk/app-debug.apk
+          apk=build/app/outputs/flutter-apk/app-arm64-v8a-debug.apk
           if ! unzip -l "$apk" | grep -q 'lib/arm64-v8a/libaether.so'; then
             echo "::error::the apk carries no aether core"
             unzip -l "$apk" | grep 'lib/' || true
@@ -73,12 +73,12 @@ jobs:
 
       - name: Rename APK
         run: |
-          cp build/app/outputs/flutter-apk/app-debug.apk ShadowRay-warp-universal-debug.apk
-          ls -la ShadowRay-warp-universal-debug.apk
+          cp build/app/outputs/flutter-apk/app-arm64-v8a-debug.apk ShadowRay-arm64-v1.1.apk
+          ls -la ShadowRay-arm64-v1.1.apk
 
       - name: Upload APK artifact
         uses: actions/upload-artifact@v4
         with:
-          name: ShadowRay-Warp-APK
-          path: ShadowRay-warp-universal-debug.apk
+          name: ShadowRay-Warp-arm64
+          path: ShadowRay-arm64-v1.1.apk
           retention-days: 30
