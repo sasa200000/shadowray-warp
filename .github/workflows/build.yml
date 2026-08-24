@@ -1,0 +1,84 @@
+name: Build ShadowRay Warp APK
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+
+jobs:
+  build-android:
+    name: Android APK
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout with the core and hev-socks5-tunnel
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: "17"
+          distribution: "zulu"
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "3.44.3"
+          cache: true
+
+      - name: Set up Rust with the Android target
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: aarch64-linux-android, armv7-linux-androideabi, x86_64-linux-android, i686-linux-android
+
+      - name: Cache cargo
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            aetherproject/aether/target
+          key: cargo-android-${{ hashFiles('aetherproject/aether/Cargo.lock') }}
+          restore-keys: cargo-android-
+
+      - name: Install the NDK
+        uses: nttld/setup-ndk@v1
+        id: ndk
+        with:
+          ndk-version: r27c
+          link-to-sdk: true
+
+      - name: Pin both modules to the NDK that was installed
+        run: |
+          version=$(basename "$(ls -d "$ANDROID_HOME"/ndk/*/ | head -1)")
+          echo "ANDROID_NDK_VERSION=$version" >> "$GITHUB_ENV"
+          echo "ANDROID_NDK_HOME=$ANDROID_HOME/ndk/$version" >> "$GITHUB_ENV"
+          echo "using ndk $version"
+
+      - name: Build universal debug APK (arm64 + armv7 + x86_64)
+        run: |
+          flutter pub get
+          flutter build apk --debug --target-platform android-arm64,android-arm32,android-x64
+
+      - name: Verify the core is bundled
+        run: |
+          apk=build/app/outputs/flutter-apk/app-debug.apk
+          if ! unzip -l "$apk" | grep -q 'lib/arm64-v8a/libaether.so'; then
+            echo "::error::the apk carries no aether core"
+            unzip -l "$apk" | grep 'lib/' || true
+            exit 1
+          fi
+          echo "aether core is inside the apk"
+
+      - name: Rename APK
+        run: |
+          cp build/app/outputs/flutter-apk/app-debug.apk ShadowRay-warp-universal-debug.apk
+          ls -la ShadowRay-warp-universal-debug.apk
+
+      - name: Upload APK artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ShadowRay-Warp-APK
+          path: ShadowRay-warp-universal-debug.apk
+          retention-days: 30
