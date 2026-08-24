@@ -59,7 +59,7 @@ jobs:
       - name: Build universal debug APK (arm64 + armv7 + x86_64)
         run: |
           flutter pub get
-          flutter build apk --debug --target-platform android-arm64,android-arm32,android-x64
+          flutter build apk --debug --target-platform android-arm64,android-arm,android-x64
 
       - name: Verify the core is bundled
         run: |
