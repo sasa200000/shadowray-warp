@@ -38,7 +38,6 @@ jobs:
           path: |
             ~/.cargo/registry
             ~/.cargo/git
-            aetherproject/aether/target
           key: cargo-android-${{ hashFiles('aetherproject/aether/Cargo.lock') }}
           restore-keys: cargo-android-
 
