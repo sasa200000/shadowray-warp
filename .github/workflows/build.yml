@@ -76,7 +76,7 @@ jobs:
           ls -la ShadowRay-arm64-v1.1.apk
 
       - name: Upload APK artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: ShadowRay-Warp-arm64
           path: ShadowRay-arm64-v1.1.apk
