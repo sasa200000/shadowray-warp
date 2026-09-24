@@ -24,6 +24,7 @@ class AppPreferences {
     ThemeMode? themeMode,
     String? localeCode,
     bool? introSeen,
+    String? danceStyle,
   }) {
     return AppPreferences(
       themeMode: themeMode ?? this.themeMode,
