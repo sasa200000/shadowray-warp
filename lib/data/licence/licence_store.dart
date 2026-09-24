@@ -71,4 +71,11 @@ class LicenceStore {
       await _prefs.setStringList(_kMintedCodes, list);
     }
   }
+
+  /// Removes a single code from this device's history.
+  Future<void> forgetMintedCode(String code) async {
+    final list = mintedCodes;
+    list.remove(code);
+    await _prefs.setStringList(_kMintedCodes, list);
+  }
 }

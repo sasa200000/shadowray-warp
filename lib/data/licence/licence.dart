@@ -76,6 +76,8 @@ class LicencePlans {
     '5M': LicencePlan(id: '5M', label: '۵ ماهه', durationDays: 150),
     '8M': LicencePlan(id: '8M', label: '۸ ماهه', durationDays: 240),
     '1Y': LicencePlan(id: '1Y', label: '۱ ساله', durationDays: 365),
+    'LIFETIME': LicencePlan(
+        id: 'LIFETIME', label: 'نامحدود', durationDays: 36500),
   };
 
   static const List<int> deviceTiers = <int>[1, 2, 4, 6];
@@ -118,8 +120,9 @@ class LicenceVerifier {
 
     final issued = DateTime.fromMillisecondsSinceEpoch(parts.issuedAt * 1000,
         isUtc: true);
-    if (DateTime.now()
-        .isAfter(issued.add(Duration(days: plan.durationDays + 60)))) {
+    if (plan.durationDays < 36500 &&
+        DateTime.now()
+            .isAfter(issued.add(Duration(days: plan.durationDays + 60)))) {
       return null;
     }
 

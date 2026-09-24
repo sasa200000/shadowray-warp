@@ -8,10 +8,9 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'app_localizations.dart';
 
-/// The translations for the locale (`en`).
+/// The translations for the English locale.
 class AppLocalizationsEn extends L10n {
   AppLocalizationsEn(String locale) : super(locale);
-
 
   @override
   String get about => "About";
@@ -66,6 +65,9 @@ class AppLocalizationsEn extends L10n {
 
   @override
   String get adminDeviceUnit => "user";
+
+  @override
+  String get adminDeviceUnlimited => "Unlimited";
 
   @override
   String get adminDevices => "Number of users (devices)";
@@ -165,6 +167,12 @@ class AppLocalizationsEn extends L10n {
 
   @override
   String get copyLogs => "Copy logs";
+
+  @override
+  String get danceStyle => "Light dance style";
+
+  @override
+  String get danceStyleDesc => "Colours of the animated borders";
 
   @override
   String get dataCheck => "Check data really flows";

@@ -7,11 +7,10 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:intl/intl.dart' as intl;
+
 import 'app_localizations_en.dart';
 import 'app_localizations_fa.dart';
 
-/// Callers can lookup localized strings with an instance of L10n returned by
-/// [L10n.of]. This class also defines the messages for each locale.
 abstract class L10n {
   L10n(String locale) : localeName = intl.Intl.canonicalizedLocale(locale.toString());
 
@@ -20,32 +19,6 @@ abstract class L10n {
   static L10n of(BuildContext context) {
     return Localizations.of<L10n>(context, L10n)!;
   }
-
-class _L10nDelegate extends LocalizationsDelegate<L10n> {
-  const _L10nDelegate();
-
-  @override
-  Future<L10n> load(Locale locale) {
-    final String lang = locale.countryCode == null || locale.countryCode!.isEmpty
-        ? locale.languageCode
-        : locale.toString();
-    switch (lang) {
-      case 'en':
-        return SynchronousFuture<L10n>(AppLocalizationsEn(locale.toString()));
-      case 'fa':
-        return SynchronousFuture<L10n>(AppLocalizationsFa(locale.toString()));
-      default:
-        return SynchronousFuture<L10n>(AppLocalizationsEn(locale.toString()));
-    }
-  }
-
-  @override
-  bool isSupported(Locale locale) =>
-      <String>['en', 'fa'].contains(locale.languageCode);
-
-  @override
-  bool shouldReload(_L10nDelegate old) => false;
-}
 
   static const LocalizationsDelegate<L10n> delegate = _L10nDelegate();
 
@@ -107,6 +80,9 @@ class _L10nDelegate extends LocalizationsDelegate<L10n> {
 
   /// adminDeviceUnit
   String get adminDeviceUnit;
+
+  /// adminDeviceUnlimited
+  String get adminDeviceUnlimited;
 
   /// adminDevices
   String get adminDevices;
@@ -206,6 +182,12 @@ class _L10nDelegate extends LocalizationsDelegate<L10n> {
 
   /// copyLogs
   String get copyLogs;
+
+  /// danceStyle
+  String get danceStyle;
+
+  /// danceStyleDesc
+  String get danceStyleDesc;
 
   /// dataCheck
   String get dataCheck;
@@ -986,4 +968,30 @@ class _L10nDelegate extends LocalizationsDelegate<L10n> {
 
   /// zeroTrustTokenDesc
   String get zeroTrustTokenDesc;
+}
+
+class _L10nDelegate extends LocalizationsDelegate<L10n> {
+  const _L10nDelegate();
+
+  @override
+  Future<L10n> load(Locale locale) {
+    final String lang = locale.countryCode == null || locale.countryCode!.isEmpty
+        ? locale.languageCode
+        : locale.toString();
+    switch (lang) {
+      case 'en':
+        return SynchronousFuture<L10n>(AppLocalizationsEn(locale.toString()));
+      case 'fa':
+        return SynchronousFuture<L10n>(AppLocalizationsFa(locale.toString()));
+      default:
+        return SynchronousFuture<L10n>(AppLocalizationsEn(locale.toString()));
+    }
+  }
+
+  @override
+  bool isSupported(Locale locale) =>
+      <String>['en', 'fa'].contains(locale.languageCode);
+
+  @override
+  bool shouldReload(_L10nDelegate old) => false;
 }

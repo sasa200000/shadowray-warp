@@ -2,13 +2,77 @@ import 'dart:math' show pi;
 
 import 'package:flutter/cupertino.dart';
 
-/// A reusable rainbow light border that dances around ANY widget.
+/// The light-dance styles the user can switch between from settings.
+enum DanceStyle {
+  rainbow('rainbow', 'Rainbow'),
+  neon('neon', 'Neon'),
+  fire('fire', 'Fire'),
+  ocean('ocean', 'Ocean'),
+  aurora('aurora', 'Aurora');
+
+  const DanceStyle(this.id, this.label);
+
+  final String id;
+  final String label;
+
+  static DanceStyle byId(String id) =>
+      DanceStyle.values.firstWhere((s) => s.id == id,
+          orElse: () => DanceStyle.rainbow);
+}
+
+const Map<DanceStyle, List<Color>> _kDanceColors = <DanceStyle, List<Color>>{
+  DanceStyle.rainbow: <Color>[
+    Color(0xFFFF1744),
+    Color(0xFFFF9100),
+    Color(0xFFFFEA00),
+    Color(0xFF00E676),
+    Color(0xFF00E5FF),
+    Color(0xFF2979FF),
+    Color(0xFFD500F9),
+    Color(0xFFFF1744),
+  ],
+  DanceStyle.neon: <Color>[
+    Color(0xFF00E5FF),
+    Color(0xFF18FFFF),
+    Color(0xFF76FF03),
+    Color(0xFF00E5FF),
+    Color(0xFF2979FF),
+    Color(0xFF00E5FF),
+  ],
+  DanceStyle.fire: <Color>[
+    Color(0xFFFF1744),
+    Color(0xFFFF3D00),
+    Color(0xFFFF9100),
+    Color(0xFFFFC400),
+    Color(0xFFFFEA00),
+    Color(0xFFFF6E40),
+    Color(0xFFFF1744),
+  ],
+  DanceStyle.ocean: <Color>[
+    Color(0xFF00B0FF),
+    Color(0xFF00E5FF),
+    Color(0xFF18FFFF),
+    Color(0xFF2979FF),
+    Color(0xFF0091EA),
+    Color(0xFF00B0FF),
+  ],
+  DanceStyle.aurora: <Color>[
+    Color(0xFF00E676),
+    Color(0xFF00E5FF),
+    Color(0xFFB388FF),
+    Color(0xFFE040FB),
+    Color(0xFF69F0AE),
+    Color(0xFF00E676),
+  ],
+};
+
+/// A reusable light border that dances around ANY widget.
 ///
-/// A rotating seven-colour gradient is painted as a rounded-rect stroke around
-/// the wrapped child. It is the one effect used across the whole app: the
-/// connect button, the licence entry field, the admin panel pickers and the
-/// generated-code box. [active] controls speed and saturation, so the same
-/// widget can either breathe slowly or run fast.
+/// A rotating gradient is painted as a rounded-rect stroke around the wrapped
+/// child. It is the one effect used across the whole app: the connect button,
+/// the licence entry field, the admin panel pickers and the generated-code box.
+/// [active] controls speed and saturation, so the same widget can either
+/// breathe slowly or run fast. [style] picks the colour set.
 class RainbowBorderDance extends StatefulWidget {
   const RainbowBorderDance({
     super.key,
@@ -18,6 +82,7 @@ class RainbowBorderDance extends StatefulWidget {
     this.borderWidth = 3,
     this.glow = false,
     this.padding = EdgeInsets.zero,
+    this.style = DanceStyle.rainbow,
   });
 
   final Widget child;
@@ -26,6 +91,7 @@ class RainbowBorderDance extends StatefulWidget {
   final double borderWidth;
   final bool glow;
   final EdgeInsets padding;
+  final DanceStyle style;
 
   @override
   State<RainbowBorderDance> createState() => _RainbowBorderDanceState();
@@ -64,6 +130,7 @@ class _RainbowBorderDanceState extends State<RainbowBorderDance>
             glow: widget.glow,
             speed: widget.active ? 1.0 : 0.25,
             alpha: widget.active ? 1.0 : 0.55,
+            colors: _kDanceColors[widget.style]!,
           ),
           child: Padding(
             padding: widget.padding,
@@ -84,6 +151,7 @@ class _RainbowBorderPainter extends CustomPainter {
     required this.glow,
     required this.speed,
     required this.alpha,
+    required this.colors,
   });
 
   final double progress;
@@ -92,17 +160,7 @@ class _RainbowBorderPainter extends CustomPainter {
   final bool glow;
   final double speed;
   final double alpha;
-
-  static const List<Color> _rainbow = <Color>[
-    Color(0xFFFF1744),
-    Color(0xFFFF9100),
-    Color(0xFFFFEA00),
-    Color(0xFF00E676),
-    Color(0xFF00E5FF),
-    Color(0xFF2979FF),
-    Color(0xFFD500F9),
-    Color(0xFFFF1744),
-  ];
+  final List<Color> colors;
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -120,7 +178,7 @@ class _RainbowBorderPainter extends CustomPainter {
       ..shader = SweepGradient(
         center: Alignment.center,
         startAngle: angle,
-        colors: _rainbow
+        colors: colors
             .map((Color c) => c.withValues(alpha: alpha))
             .toList(growable: false),
         tileMode: TileMode.mirror,
@@ -134,7 +192,7 @@ class _RainbowBorderPainter extends CustomPainter {
         ..shader = SweepGradient(
           center: Alignment.center,
           startAngle: angle,
-          colors: _rainbow
+          colors: colors
               .map((Color c) => c.withValues(alpha: 0.30 * alpha))
               .toList(growable: false),
           tileMode: TileMode.mirror,
@@ -147,5 +205,5 @@ class _RainbowBorderPainter extends CustomPainter {
 
   @override
   bool shouldRepaint(_RainbowBorderPainter old) =>
-      old.progress != progress || old.alpha != alpha;
+      old.progress != progress || old.alpha != alpha || old.colors != colors;
 }

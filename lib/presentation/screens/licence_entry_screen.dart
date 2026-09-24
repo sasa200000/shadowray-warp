@@ -6,6 +6,7 @@ import '../../core/theme/app_theme.dart';
 import '../../core/constants/support_link.dart';
 import '../../data/services/licence_providers.dart';
 import '../../l10n/generated/app_localizations.dart';
+import '../providers/app_providers.dart';
 import '../widgets/rainbow_border_dance.dart';
 
 /// The first screen anyone sees. Nothing else in the app is reachable until a
@@ -98,6 +99,7 @@ class _LicenceEntryScreenState extends ConsumerState<LicenceEntryScreen> {
                   ),
                   const SizedBox(height: 26),
                   RainbowBorderDance(
+                    style: ref.watch(danceStyleProvider),
                     active: !_busy,
                     borderRadius: 16,
                     borderWidth: 2.5,
@@ -135,19 +137,27 @@ class _LicenceEntryScreenState extends ConsumerState<LicenceEntryScreen> {
                         : Text(l10n.licenceActivate),
                   ),
                   const SizedBox(height: 26),
-                  CupertinoButton(
-                    onPressed: _openSupport,
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: <Widget>[
-                        Icon(CupertinoIcons.chat_bubble_text, size: 16,
-                            color: palette.primary),
-                        const SizedBox(width: 8),
-                        Text(
-                          l10n.supportChannel,
-                          style: AppText.caption(palette.primary),
-                        ),
-                      ],
+                  RainbowBorderDance(
+                    style: ref.watch(danceStyleProvider),
+                    active: true,
+                    borderRadius: 26,
+                    borderWidth: 2.5,
+                    glow: true,
+                    padding: const EdgeInsets.all(3),
+                    child: CupertinoButton(
+                      onPressed: _openSupport,
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: <Widget>[
+                          Icon(CupertinoIcons.chat_bubble_text, size: 16,
+                              color: palette.primary),
+                          const SizedBox(width: 8),
+                          Text(
+                            l10n.supportChannel,
+                            style: AppText.caption(palette.primary),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ],

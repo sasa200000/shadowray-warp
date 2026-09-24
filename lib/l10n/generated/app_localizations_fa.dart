@@ -8,10 +8,9 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'app_localizations.dart';
 
-/// The translations for the Persian locale (`fa`).
+/// The translations for the Persian locale.
 class AppLocalizationsFa extends L10n {
   AppLocalizationsFa(String locale) : super(locale);
-
 
   @override
   String get about => "درباره";
@@ -66,6 +65,9 @@ class AppLocalizationsFa extends L10n {
 
   @override
   String get adminDeviceUnit => "کاربر";
+
+  @override
+  String get adminDeviceUnlimited => "نامحدود";
 
   @override
   String get adminDevices => "تعداد کاربر (دستگاه)";
@@ -165,6 +167,12 @@ class AppLocalizationsFa extends L10n {
 
   @override
   String get copyLogs => "کپی گزارش‌ها";
+
+  @override
+  String get danceStyle => "سبک رقص نور";
+
+  @override
+  String get danceStyleDesc => "رنگ‌های حاشیه‌های متحرک";
 
   @override
   String get dataCheck => "بررسی عبور داده";

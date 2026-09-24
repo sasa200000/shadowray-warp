@@ -10,6 +10,7 @@ import '../../l10n/generated/app_localizations.dart';
 import '../providers/app_providers.dart';
 import '../providers/tunnel_providers.dart';
 import '../widgets/pickers.dart';
+import '../widgets/rainbow_border_dance.dart';
 import '../widgets/screen_header.dart';
 import '../widgets/settings_list.dart';
 import 'advanced_screen.dart';
@@ -289,6 +290,24 @@ class SettingsScreen extends ConsumerWidget {
                           ),
                         ],
                         onSelected: prefsController.setThemeMode,
+                      ),
+                    ),
+                    SettingsRow(
+                      title: l10n.danceStyle,
+                      subtitle: l10n.danceStyleDesc,
+                      value: DanceStyle.byId(prefs.danceStyle).label,
+                      onTap: () => showChoiceSheet<DanceStyle>(
+                        context: context,
+                        title: l10n.danceStyle,
+                        selected: DanceStyle.byId(prefs.danceStyle),
+                        options: DanceStyle.values
+                            .map((v) => PickerOption<DanceStyle>(
+                                  value: v,
+                                  title: v.label,
+                                ))
+                            .toList(),
+                        onSelected: (v) =>
+                            prefsController.setDanceStyle(v.id),
                       ),
                     ),
                     SettingsRow(

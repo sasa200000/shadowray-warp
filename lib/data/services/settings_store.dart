@@ -8,11 +8,15 @@ class AppPreferences {
     this.themeMode = ThemeMode.dark,
     this.localeCode = 'fa',
     this.introSeen = false,
+    this.danceStyle = 'rainbow',
   });
 
   final ThemeMode themeMode;
   final String localeCode;
   final bool introSeen;
+
+  /// Which light-dance effect the app uses: rainbow, neon, fire, ocean, aurora.
+  final String danceStyle;
 
   Locale get locale => Locale(localeCode);
 
@@ -25,6 +29,7 @@ class AppPreferences {
       themeMode: themeMode ?? this.themeMode,
       localeCode: localeCode ?? this.localeCode,
       introSeen: introSeen ?? this.introSeen,
+      danceStyle: danceStyle ?? this.danceStyle,
     );
   }
 }
@@ -83,6 +88,7 @@ class SettingsStore {
   static const _kThemeMode = 'app.themeMode';
   static const _kLocale = 'app.locale';
   static const _kIntroSeen = 'app.introSeen';
+  static const _kDanceStyle = 'app.danceStyle';
 
   String? _string(String key) => _prefs.getString('$_prefix$key');
 
@@ -211,6 +217,7 @@ class SettingsStore {
       ),
       localeCode: _prefs.getString(_kLocale) ?? 'fa',
       introSeen: _prefs.getBool(_kIntroSeen) ?? false,
+      danceStyle: _prefs.getString(_kDanceStyle) ?? 'rainbow',
     );
   }
 
@@ -218,5 +225,6 @@ class SettingsStore {
     await _prefs.setString(_kThemeMode, prefs.themeMode.name);
     await _prefs.setString(_kLocale, prefs.localeCode);
     await _prefs.setBool(_kIntroSeen, prefs.introSeen);
+    await _prefs.setString(_kDanceStyle, prefs.danceStyle);
   }
 }

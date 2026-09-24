@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../widgets/rainbow_border_dance.dart';
+
 import '../../data/services/geo_service.dart';
 import '../../data/services/settings_store.dart';
 import '../../data/services/tunnel_channel.dart';
@@ -39,11 +41,23 @@ class AppPreferencesController extends StateNotifier<AppPreferences> {
     state = state.copyWith(introSeen: true);
     await _store.writeAppPreferences(state);
   }
+
+  /// Switches the light-dance colour effect used all over the app.
+  Future<void> setDanceStyle(String id) async {
+    state = state.copyWith(danceStyle: id);
+    await _store.writeAppPreferences(state);
+  }
 }
 
 final appPreferencesProvider =
     StateNotifierProvider<AppPreferencesController, AppPreferences>((ref) {
   return AppPreferencesController(ref.watch(settingsStoreProvider));
+});
+
+/// The currently selected light-dance style, for the whole UI.
+final danceStyleProvider = Provider<DanceStyle>((ref) {
+  final prefs = ref.watch(appPreferencesProvider);
+  return DanceStyle.byId(prefs.danceStyle);
 });
 
 final coreVersionProvider = FutureProvider<String>((ref) async {

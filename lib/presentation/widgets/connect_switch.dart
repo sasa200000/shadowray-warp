@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/theme/app_theme.dart';
 import '../../data/models/tunnel_status.dart';
+import '../providers/app_providers.dart';
 import 'rainbow_border_dance.dart';
 
 /// The big connect button, wrapped in the light dance.
@@ -12,7 +14,7 @@ import 'rainbow_border_dance.dart';
 /// it spins up; once connected it turns into a fast, saturated rainbow that
 /// runs around the whole button while live upload/download counters are shown
 /// elsewhere on the screen.
-class ConnectSwitch extends StatelessWidget {
+class ConnectSwitch extends ConsumerWidget {
   const ConnectSwitch({
     super.key,
     required this.stage,
@@ -28,12 +30,14 @@ class ConnectSwitch extends StatelessWidget {
   static const double _height = 74;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final palette = context.palette;
 
     final on = stage.isActive || stage.isBusy;
+    final style = ref.watch(danceStyleProvider);
 
     return RainbowBorderDance(
+      style: style,
       active: on,
       borderRadius: _height / 2,
       borderWidth: on ? 5 : 2.5,

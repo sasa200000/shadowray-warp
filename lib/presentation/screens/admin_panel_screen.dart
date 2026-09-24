@@ -10,6 +10,7 @@ import '../../data/licence/licence_store.dart';
 import '../../data/services/licence_providers.dart';
 import '../../l10n/generated/app_localizations.dart';
 import '../../core/theme/app_theme.dart';
+import '../providers/app_providers.dart';
 import '../widgets/rainbow_border_dance.dart';
 
 /// The admin panel, hidden behind a lock code.
@@ -71,10 +72,18 @@ class _AdminPanelScreenState extends ConsumerState<AdminPanelScreen> {
     _toast(L10n.of(context).adminLockChanged);
   }
 
+  Future<void> _forgetCode(String code) async {
+    final store = await ref.read(licenceStoreProvider.future);
+    await store.forgetMintedCode(code);
+    if (!mounted) return;
+    setState(() {});
+  }
+
   Future<void> _mint() async {
     final planId = _planId;
     if (planId == null) return;
-    final code = LicenceMinter.mint(planId: planId, devices: _devices);
+    final devices = _devices == 999 ? 999 : _devices;
+    final code = LicenceMinter.mint(planId: planId, devices: devices);
     final store = await ref.read(licenceStoreProvider.future);
     await store.rememberMintedCode(code);
     if (!mounted) return;
@@ -201,6 +210,7 @@ class _AdminPanelScreenState extends ConsumerState<AdminPanelScreen> {
                   if (_lastMinted != null) ...<Widget>[
                     const SizedBox(height: 16),
                     RainbowBorderDance(
+                      style: ref.watch(danceStyleProvider),
                       active: true,
                       borderRadius: 14,
                       borderWidth: 3,
@@ -263,6 +273,7 @@ class _AdminPanelScreenState extends ConsumerState<AdminPanelScreen> {
           children: LicencePlans.known.values.map((LicencePlan plan) {
             final selected = _planId == plan.id;
             return RainbowBorderDance(
+              style: ref.watch(danceStyleProvider),
               active: selected,
               borderRadius: 20,
               borderWidth: selected ? 3 : 1.5,
@@ -306,9 +317,11 @@ class _AdminPanelScreenState extends ConsumerState<AdminPanelScreen> {
         Wrap(
           spacing: 8,
           runSpacing: 8,
-          children: LicencePlans.deviceTiers.map((int tier) {
+          children: <int>[...LicencePlans.deviceTiers, 999].map((int tier) {
             final selected = _devices == tier;
+            final unlimited = tier == 999;
             return RainbowBorderDance(
+              style: ref.watch(danceStyleProvider),
               active: selected,
               borderRadius: 20,
               borderWidth: selected ? 3 : 1.5,
@@ -326,7 +339,7 @@ class _AdminPanelScreenState extends ConsumerState<AdminPanelScreen> {
                     borderRadius: BorderRadius.circular(20),
                   ),
                   child: Text(
-                    '$tier ${l10n.adminDeviceUnit}',
+                    unlimited ? l10n.adminDeviceUnlimited : '$tier ${l10n.adminDeviceUnit}',
                     style: TextStyle(
                       color: selected
                           ? CupertinoColors.white
@@ -373,9 +386,26 @@ class _AdminPanelScreenState extends ConsumerState<AdminPanelScreen> {
                   .take(12)
                   .map((String code) => Padding(
                         padding: const EdgeInsets.symmetric(vertical: 4),
-                        child: SelectableText(
-                          code,
-                          style: const TextStyle(fontSize: 13),
+                        child: Row(
+                          children: <Widget>[
+                            Expanded(
+                              child: SelectableText(
+                                code,
+                                style: const TextStyle(fontSize: 13),
+                              ),
+                            ),
+                            CupertinoButton(
+                              padding: EdgeInsets.zero,
+                              minSize: 30,
+                              onPressed: () => _forgetCode(code),
+                              child: Icon(
+                                CupertinoIcons.delete,
+                                size: 18,
+                                color: CupertinoColors.destructiveRed
+                                    .resolveFrom(context),
+                              ),
+                            ),
+                          ],
                         ),
                       ))
                   .toList(),
@@ -394,6 +424,7 @@ class _AdminPanelScreenState extends ConsumerState<AdminPanelScreen> {
                 fontSize: 16, fontWeight: FontWeight.w700)),
         const SizedBox(height: 8),
         RainbowBorderDance(
+          style: ref.watch(danceStyleProvider),
           active: true,
           borderRadius: 14,
           borderWidth: 2.5,
