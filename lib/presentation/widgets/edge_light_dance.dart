@@ -1,3 +1,4 @@
+import 'dart:math' show pi;
 import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
@@ -106,7 +107,6 @@ class _EdgePainter extends CustomPainter {
       ..shader = SweepGradient(
         center: Alignment.center,
         startAngle: angle % (2 * pi),
-        sweepAngle: sweep,
         colors: _EdgePainterColors.rainbow,
         tileMode: TileMode.mirror,
       ).createShader(rect);
@@ -128,7 +128,6 @@ class _EdgePainter extends CustomPainter {
       ..shader = SweepGradient(
         center: Alignment.center,
         startAngle: (-angle * 1.4) % (2 * pi),
-        sweepAngle: sweep * 0.6,
         colors: _EdgePainterColors.rainbow,
         tileMode: TileMode.mirror,
       ).createShader(rect);

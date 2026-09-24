@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart' show SelectableText;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../data/licence/licence.dart';
@@ -8,6 +9,7 @@ import '../../data/licence/licence_minter.dart';
 import '../../data/licence/licence_store.dart';
 import '../../data/services/licence_providers.dart';
 import '../../l10n/generated/app_localizations.dart';
+import '../../core/theme/app_theme.dart';
 
 /// The admin panel, hidden behind a lock code.
 ///
@@ -326,7 +328,7 @@ class _AdminPanelScreenState extends ConsumerState<AdminPanelScreen> {
         if (codes.isEmpty)
           Text(l10n.adminHistoryEmpty,
               style: TextStyle(
-                  color: CupertinoColors.labelSecondary.resolveFrom(context)))
+                  color: context.palette.labelSecondary))
         else
           Container(
             padding: const EdgeInsets.all(12),

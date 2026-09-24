@@ -7,6 +7,7 @@ import 'package:url_launcher/url_launcher.dart';
 import '../../data/licence/licence.dart';
 import '../../data/services/licence_providers.dart';
 import '../../l10n/generated/app_localizations.dart';
+import '../../core/theme/app_theme.dart';
 
 /// The single support channel. No code, no panel, just the admin's contact.
 const String kSupportLink = 'https://t.me/SasaX60';
@@ -94,7 +95,7 @@ class _LicenceEntryScreenState extends ConsumerState<LicenceEntryScreen> {
                       fontSize: 14,
                       color: widget.expired
                           ? CupertinoColors.destructiveRed.resolveFrom(context)
-                          : CupertinoColors.labelSecondary.resolveFrom(context),
+                          : context.palette.labelSecondary,
                     ),
                   ),
                   const SizedBox(height: 32),
@@ -141,14 +142,14 @@ class _LicenceEntryScreenState extends ConsumerState<LicenceEntryScreen> {
                       Icon(
                         CupertinoIcons.chat_bubble_text,
                         size: 16,
-                        color: CupertinoColors.labelSecondary.resolveFrom(context),
+                        color: context.palette.labelSecondary,
                       ),
                       const SizedBox(width: 6),
                       Text(
                         l10n.supportLabel,
                         style: TextStyle(
                           fontSize: 13,
-                          color: CupertinoColors.labelSecondary.resolveFrom(context),
+                          color: context.palette.labelSecondary,
                         ),
                       ),
                     ],

@@ -1,3 +1,4 @@
+import 'dart:math' show pi;
 import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
@@ -177,7 +178,6 @@ class _HaloPainter extends CustomPainter {
       ..shader = SweepGradient(
         center: Alignment.center,
         startAngle: spin % (2 * pi),
-        sweepAngle: sweep * 2 * pi,
         colors: _rainbow.map((Color c) => c.withOpacity(alpha)).toList(),
       ).createShader(rect);
 
@@ -191,7 +191,7 @@ class _HaloPainter extends CustomPainter {
         ..shader = RadialGradient(
           colors: <Color>[
             const Color(0xFF00E5FF).withOpacity(0.25),
-            Colors.transparent,
+            const Color(0x00000000),
           ],
         ).createShader(rect.inflate(18));
       canvas.drawCircle(center, radius + 12, bloom);

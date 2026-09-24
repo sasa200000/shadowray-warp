@@ -72,10 +72,10 @@ eeqYKHZENFc85dRdOc2bovfUXH9QTL+kY7f/VzmVvI+mYBIWUDNjUg7a/1EHjYUY
     final inner =
         asn1.ASN1Parser(innerBytes).nextObject() as asn1.ASN1Sequence;
     // RSAPrivateKey: version, n, e, d, p, q, dP, dQ, qInv.
-    final modulus = (inner.elements![1] as asn1.ASN1Integer).value;
-    final privateExponent = (inner.elements![3] as asn1.ASN1Integer).value;
-    final p = (inner.elements![4] as asn1.ASN1Integer).value;
-    final q = (inner.elements![5] as asn1.ASN1Integer).value;
+    final modulus = (inner.elements![1] as asn1.ASN1Integer).integer!;
+    final privateExponent = (inner.elements![3] as asn1.ASN1Integer).integer!;
+    final p = (inner.elements![4] as asn1.ASN1Integer).integer!;
+    final q = (inner.elements![5] as asn1.ASN1Integer).integer!;
     return asym.RSAPrivateKey(modulus, privateExponent, p, q);
   }
 }

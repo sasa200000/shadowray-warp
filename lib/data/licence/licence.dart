@@ -178,8 +178,8 @@ JQIDAQAB
     final bitString = seq.elements![1] as asn1.ASN1BitString;
     final keyParser = asn1.ASN1Parser(bitString.valueBytes);
     final keySeq = keyParser.nextObject() as asn1.ASN1Sequence;
-    final modulus = (keySeq.elements![0] as asn1.ASN1Integer).value;
-    final exponent = (keySeq.elements![1] as asn1.ASN1Integer).value;
+    final modulus = (keySeq.elements![0] as asn1.ASN1Integer).integer!;
+    final exponent = (keySeq.elements![1] as asn1.ASN1Integer).integer!;
     return asym.RSAPublicKey(modulus, exponent);
   }
 }
