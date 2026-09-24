@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../data/models/tunnel_status.dart';
 import '../../l10n/generated/app_localizations.dart';
+import '../providers/tunnel_providers.dart';
 
 /// The light dance that runs around the whole screen while the tunnel is up.
 ///
