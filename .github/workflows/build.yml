@@ -91,3 +91,5 @@ jobs:
           tag_name: v1.0
           name: SasaVPN v1.0
           files: SasaVPN-arm64-v1.0.apk
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
