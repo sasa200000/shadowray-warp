@@ -61,11 +61,11 @@ jobs:
       - name: Build arm64 APK
         run: |
           flutter pub get
-          flutter build apk --release --target-platform android-arm64 --split-per-abi
+          flutter build apk --debug --target-platform android-arm64 --split-per-abi
 
       - name: Verify the core is bundled
         run: |
-          apk=build/app/outputs/flutter-apk/app-arm64-v8a-release.apk
+          apk=build/app/outputs/flutter-apk/app-arm64-v8a-debug.apk
           if ! unzip -l "$apk" | grep -q 'lib/arm64-v8a/libaether.so'; then
             echo "::error::the apk carries no aether core"
             unzip -l "$apk" | grep 'lib/' || true
@@ -75,7 +75,7 @@ jobs:
 
       - name: Rename APK
         run: |
-          cp build/app/outputs/flutter-apk/app-arm64-v8a-release.apk SasaVPN-arm64-v1.0.apk
+          cp build/app/outputs/flutter-apk/app-arm64-v8a-debug.apk SasaVPN-arm64-v1.0.apk
           ls -la SasaVPN-arm64-v1.0.apk
 
       - name: Upload APK artifact
