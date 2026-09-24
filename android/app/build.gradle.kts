@@ -28,7 +28,7 @@ android {
     }
 
     defaultConfig {
-        applicationId = "com.sasavpn.warp"
+        applicationId = "com.shadowray.warp"
         minSdk = 24
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode

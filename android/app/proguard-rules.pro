@@ -8,4 +8,4 @@
 # pointycastle (RSA licence verification) reflects into its own internals.
 -keep class org.bouncycastle.** { *; }
 -dontwarn org.bouncycastle.**
--keep class com.sasavpn.** { *; }
+-keep class com.shadowray.warp.** { *; }
