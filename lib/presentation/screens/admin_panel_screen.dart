@@ -10,6 +10,7 @@ import '../../data/licence/licence_store.dart';
 import '../../data/services/licence_providers.dart';
 import '../../l10n/generated/app_localizations.dart';
 import '../../core/theme/app_theme.dart';
+import '../widgets/rainbow_border_dance.dart';
 
 /// The admin panel, hidden behind a lock code.
 ///
@@ -131,16 +132,23 @@ class _AdminPanelScreenState extends ConsumerState<AdminPanelScreen> {
                     style: const TextStyle(fontSize: 15),
                   ),
                   const SizedBox(height: 20),
-                  CupertinoTextField(
-                    controller: _lockInput,
-                    placeholder: l10n.adminLockPlaceholder,
+                  RainbowBorderDance(
+                    active: true,
+                    borderRadius: 14,
+                    borderWidth: 2.5,
+                    glow: true,
+                    padding: const EdgeInsets.all(3),
+                    child: CupertinoTextField(
+                      controller: _lockInput,
+                      placeholder: l10n.adminLockPlaceholder,
                     obscureText: true,
                     autocorrect: false,
                     enableSuggestions: false,
                     padding: const EdgeInsets.symmetric(
                         horizontal: 14, vertical: 14),
                     textAlign: TextAlign.center,
-                    onSubmitted: (_) => _unlock(),
+                      onSubmitted: (_) => _unlock(),
+                    ),
                   ),
                   if (_lockError != null) ...<Widget>[
                     const SizedBox(height: 10),
@@ -192,21 +200,29 @@ class _AdminPanelScreenState extends ConsumerState<AdminPanelScreen> {
                   ),
                   if (_lastMinted != null) ...<Widget>[
                     const SizedBox(height: 16),
-                    Container(
-                      padding: const EdgeInsets.all(14),
-                      decoration: BoxDecoration(
-                        color: CupertinoColors.systemGrey6
-                            .resolveFrom(context),
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: <Widget>[
-                          Text(l10n.adminCodeReady,
+                    RainbowBorderDance(
+                      active: true,
+                      borderRadius: 14,
+                      borderWidth: 3,
+                      glow: true,
+                      padding: const EdgeInsets.all(3),
+                      child: Container(
+                        padding: const EdgeInsets.all(14),
+                        decoration: BoxDecoration(
+                          color: CupertinoColors.systemGrey6
+                              .resolveFrom(context),
+                          borderRadius: BorderRadius.circular(14),
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children: <Widget>[
+                            Text(
+                              l10n.adminCodeReady,
                               style: const TextStyle(
                                   fontSize: 13,
-                                  fontWeight: FontWeight.w600)),
-                          const SizedBox(height: 6),
+                                  fontWeight: FontWeight.w600),
+                            ),
+                            const SizedBox(height: 6),
                           SelectableText(
                             _lastMinted!,
                             style: const TextStyle(
@@ -217,7 +233,8 @@ class _AdminPanelScreenState extends ConsumerState<AdminPanelScreen> {
                               ],
                             ),
                           ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   ],
@@ -245,24 +262,31 @@ class _AdminPanelScreenState extends ConsumerState<AdminPanelScreen> {
           runSpacing: 8,
           children: LicencePlans.known.values.map((LicencePlan plan) {
             final selected = _planId == plan.id;
-            return GestureDetector(
-              onTap: () => setState(() => _planId = plan.id),
-              child: Container(
-                padding: const EdgeInsets.symmetric(
-                    horizontal: 16, vertical: 10),
-                decoration: BoxDecoration(
-                  color: selected
-                      ? CupertinoColors.activeBlue.resolveFrom(context)
-                      : CupertinoColors.systemGrey6.resolveFrom(context),
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: Text(
-                  plan.label,
-                  style: TextStyle(
+            return RainbowBorderDance(
+              active: selected,
+              borderRadius: 20,
+              borderWidth: selected ? 3 : 1.5,
+              glow: selected,
+              padding: const EdgeInsets.all(2),
+              child: GestureDetector(
+                onTap: () => setState(() => _planId = plan.id),
+                child: Container(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 16, vertical: 10),
+                  decoration: BoxDecoration(
                     color: selected
-                        ? CupertinoColors.white
-                        : CupertinoColors.label.resolveFrom(context),
-                    fontWeight: FontWeight.w600,
+                        ? CupertinoColors.activeBlue.resolveFrom(context)
+                        : CupertinoColors.systemGrey6.resolveFrom(context),
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: Text(
+                    plan.label,
+                    style: TextStyle(
+                      color: selected
+                          ? CupertinoColors.white
+                          : CupertinoColors.label.resolveFrom(context),
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
                 ),
               ),
@@ -284,24 +308,31 @@ class _AdminPanelScreenState extends ConsumerState<AdminPanelScreen> {
           runSpacing: 8,
           children: LicencePlans.deviceTiers.map((int tier) {
             final selected = _devices == tier;
-            return GestureDetector(
-              onTap: () => setState(() => _devices = tier),
-              child: Container(
-                padding: const EdgeInsets.symmetric(
-                    horizontal: 18, vertical: 10),
-                decoration: BoxDecoration(
-                  color: selected
-                      ? CupertinoColors.activeBlue.resolveFrom(context)
-                      : CupertinoColors.systemGrey6.resolveFrom(context),
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: Text(
-                  '$tier ${l10n.adminDeviceUnit}',
-                  style: TextStyle(
+            return RainbowBorderDance(
+              active: selected,
+              borderRadius: 20,
+              borderWidth: selected ? 3 : 1.5,
+              glow: selected,
+              padding: const EdgeInsets.all(2),
+              child: GestureDetector(
+                onTap: () => setState(() => _devices = tier),
+                child: Container(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 18, vertical: 10),
+                  decoration: BoxDecoration(
                     color: selected
-                        ? CupertinoColors.white
-                        : CupertinoColors.label.resolveFrom(context),
-                    fontWeight: FontWeight.w600,
+                        ? CupertinoColors.activeBlue.resolveFrom(context)
+                        : CupertinoColors.systemGrey6.resolveFrom(context),
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: Text(
+                    '$tier ${l10n.adminDeviceUnit}',
+                    style: TextStyle(
+                      color: selected
+                          ? CupertinoColors.white
+                          : CupertinoColors.label.resolveFrom(context),
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
                 ),
               ),
@@ -362,14 +393,20 @@ class _AdminPanelScreenState extends ConsumerState<AdminPanelScreen> {
             style: const TextStyle(
                 fontSize: 16, fontWeight: FontWeight.w700)),
         const SizedBox(height: 8),
-        CupertinoTextField(
-          controller: _newLock,
-          placeholder: l10n.adminNewLockPlaceholder,
-          autocorrect: false,
-          enableSuggestions: false,
-          obscureText: true,
-          padding:
-              const EdgeInsets.symmetric(horizontal: 14, vertical: 14),
+        RainbowBorderDance(
+          active: true,
+          borderRadius: 14,
+          borderWidth: 2.5,
+          glow: false,
+          padding: const EdgeInsets.all(3),
+          child: CupertinoTextField(
+            controller: _newLock,
+            placeholder: l10n.adminNewLockPlaceholder,
+            autocorrect: false,
+            enableSuggestions: false,
+            obscureText: true,
+            padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 14),
+          ),
         ),
         const SizedBox(height: 10),
         CupertinoButton(

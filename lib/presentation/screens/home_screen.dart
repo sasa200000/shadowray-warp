@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../../core/constants/support_link.dart';
 import '../../core/platform/desktop_shell.dart';
 import '../../core/theme/app_theme.dart';
 import '../../data/models/geo_endpoint.dart';
@@ -77,6 +78,7 @@ class HomeScreen extends ConsumerWidget {
     final status = ref.watch(tunnelProvider);
     final settings = ref.watch(tunnelSettingsProvider);
     final geo = ref.watch(geoProvider);
+    final licence = ref.watch(currentLicenceProvider);
 
     ref.listen<LoginCodeRequest?>(loginCodeProvider, (previous, next) {
       if (next != null) showLoginCodeDialog(context);
@@ -139,6 +141,15 @@ class HomeScreen extends ConsumerWidget {
                         textAlign: TextAlign.center,
                         style: AppText.state(palette.primary),
                       ),
+                      if (licence != null) ...<Widget>[
+                        const SizedBox(height: 6),
+                        Text(
+                          '${licence.planLabel} · ${licence.daysRemaining} ${l10n.licenceDaysLeft}',
+                          textDirection: TextDirection.ltr,
+                          textAlign: TextAlign.center,
+                          style: AppText.caption(palette.labelSecondary),
+                        ),
+                      ],
                       const SizedBox(height: 44),
                       ConnectSwitch(
                         stage: status.stage,

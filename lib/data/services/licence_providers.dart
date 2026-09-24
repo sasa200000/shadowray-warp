@@ -15,6 +15,13 @@ final currentLicenceProvider =
   return LicenceController(ref);
 });
 
+/// True whenever the admin panel lock has been changed at least once on this
+/// device. Until then the panel still opens with the shipped default lock.
+final adminLockChangedProvider = FutureProvider<bool>((ref) async {
+  final store = await ref.read(licenceStoreProvider.future);
+  return store.adminLockChanged;
+});
+
 class LicenceController extends StateNotifier<Licence?> {
   LicenceController(this._ref) : super(null) {
     _hydrate();

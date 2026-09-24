@@ -1,929 +1,948 @@
-import 'app_localizations.dart';
-
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
 
-/// The translations for Persian / فارسی (`fa`).
-class L10nFa extends L10n {
-  L10nFa() : super('fa');
+import 'dart:async';
 
+import 'package:flutter/foundation.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'app_localizations.dart';
+
+/// The translations for the Persian locale (`fa`).
+class AppLocalizationsFa extends L10n {
+  AppLocalizationsFa(String locale) : super(locale);
+
+
+  @override
+  String get about => "درباره";
+
+  @override
+  String get aboutApp => "مخزن برنامه";
+
+  @override
+  String get aboutAppSummary => "اپ {app} · هسته ایتر {core}";
+
+  @override
+  String get aboutBody => "ساسا وی‌پی‌ان شما را از طریق کلودفلر وارپ به اینترنت وصل می‌کند. هسته تونل، ایترِ متن‌باز است که ترافیک را روی MASQUE و WireGuard می‌برد.";
+
   @override
-  String get appName => 'SasaVPN';
+  String get aboutCore => "هسته";
 
   @override
-  String get appDisplayName => 'ساسا وی‌پی‌ان';
+  String get aboutCoreRepo => "مخزن هسته";
 
   @override
-  String get appTagline => 'اینترنت برای همه، یا هیچ‌کس';
+  String get aboutCredits => "ساخته‌شده بر پایه";
 
   @override
-  String get introMeaning => 'به معنای «بی‌خبری، فراموشی»';
+  String get aboutFooter => "ساسا وی‌پی‌ان بر پایه ShadowRay ساخته شده است. هسته تونل، ایترِ ساخته Cluvex Studio است.";
 
   @override
-  String get introCredit => 'با تلاش #یوسف_قبادی و ده‌ها کنشگر شناخته‌شده و ناشناس، برای اینکه دسترسی آزاد به اینترنت حق همه باشد.';
+  String get aboutHev => "hev-socks5-tunnel";
 
   @override
-  String get memorialTitle => 'به یاد کشته‌شدگان ۱۸ و ۱۹ دی';
+  String get aboutHevDesc => "دستگاه tun که بسته‌های شما را جابه‌جا می‌کند";
 
   @override
-  String get memorialBody => 'مردمی بی‌سلاح که به دست نیروهای جمهوری اسلامی کشته شدند';
+  String get aboutInMemory => "به یاد";
 
   @override
-  String get memorialVow => 'نه می‌بخشیم، نه فراموش می‌کنیم';
+  String get aboutLicense => "مجوز";
 
   @override
-  String get introSegaro => '#سگارو';
+  String get aboutSource => "کد منبع";
 
   @override
-  String get introYousef => '#یوسف_قبادی';
+  String get aboutVersion => "نسخه";
 
   @override
-  String get introContinue => 'ادامه';
+  String get adminChangeLock => "تغییر رمز قفل پنل";
 
   @override
-  String get stateDisconnected => 'متصل نیست';
+  String get adminChangeLockButton => "تغییر رمز";
 
   @override
-  String get stateConnecting => 'در حال اتصال';
+  String get adminCodeReady => "کد آماده است — کپی کنید";
 
   @override
-  String get stateValidating => 'بررسی سلامت تونل';
+  String get adminDeviceUnit => "کاربر";
 
   @override
-  String get stateConnected => 'متصل';
+  String get adminDevices => "تعداد کاربر (دستگاه)";
 
   @override
-  String get stateDisconnecting => 'در حال قطع';
+  String get adminGenerate => "تولید کد اشتراک";
 
   @override
-  String get stateFailed => 'اتصال برقرار نشد';
+  String get adminGenerateButton => "تولید کد";
 
   @override
-  String get tapToConnect => 'برای اتصال بزنید';
+  String get adminHistory => "کدهای ساخته‌شده";
 
   @override
-  String get tapToDisconnect => 'برای قطع بزنید';
+  String get adminHistoryEmpty => "هنوز کدی ساخته نشده است";
 
   @override
-  String get yourLocation => 'موقعیت شما';
+  String get adminLockChanged => "رمز قفل تغییر کرد";
 
   @override
-  String get exitLocation => 'خروجی اتصال';
+  String get adminLockPlaceholder => "رمز قفل";
 
   @override
-  String get detectingLocation => 'در حال تشخیص موقعیت';
+  String get adminLockPrompt => "برای ورود به پنل مدیریت رمز قفل را وارد کنید";
 
   @override
-  String get locationUnknown => 'نامشخص';
+  String get adminLockTooShort => "رمز قفل باید حداقل ۶ کاراکتر باشد";
 
   @override
-  String get uploaded => 'ارسال';
+  String get adminLockWrong => "رمز قفل اشتباه است";
 
   @override
-  String get downloaded => 'دریافت';
+  String get adminNewLockPlaceholder => "رمز قفل جدید";
 
   @override
-  String get duration => 'مدت اتصال';
+  String get adminPlan => "مدت اشتراک";
 
   @override
-  String get protocol => 'پروتکل';
+  String get adminTitle => "پنل مدیریت";
 
   @override
-  String get settings => 'تنظیمات';
+  String get adminUnlock => "ورود";
 
   @override
-  String get logs => 'گزارش‌ها';
+  String get advancedDesc => "DNS، پورت، مسیر ترافیک و تنظیمات دقیق‌تر";
 
   @override
-  String get about => 'درباره';
+  String get allowLan => "دسترسی از شبکه محلی";
 
   @override
-  String get language => 'زبان';
+  String get allowLanDesc => "دستگاه‌های دیگر شبکه هم بتوانند از این پروکسی استفاده کنند";
 
   @override
-  String get theme => 'پوسته';
+  String get appDisplayName => "ساسا وی‌پی‌ان";
 
   @override
-  String get themeDark => 'تیره';
+  String get appName => "SasaVPN";
 
   @override
-  String get themeLight => 'روشن';
+  String get appTagline => "اینترنت برای همه، یا هیچ‌کس";
 
   @override
-  String get themeSystem => 'سیستم';
+  String get apply => "اعمال";
 
   @override
-  String get sectionCore => 'هسته';
+  String get cancel => "لغو";
 
   @override
-  String get sectionNetwork => 'شبکه';
+  String get chipFullTunnel => "تونل کامل";
 
   @override
-  String get sectionAdvanced => 'پیشرفته';
+  String get chipNotProtected => "محافظت نشده";
 
   @override
-  String get routingTunnelDescMobile => 'همه ترافیک دستگاه از تونل می‌رود';
+  String get chipProxyOnly => "فقط پروکسی";
 
   @override
-  String get tunnelDegraded => 'فقط پروکسی محلی روشن است، ترافیک دستگاه از تونل نمی‌رود';
+  String get chipSocksOnly => "فقط SOCKS";
 
   @override
-  String get tunnelDegradedHint => 'برای تونل کامل، برنامه باید با دسترسی مدیر اجرا شود';
+  String get chipSystemProxy => "پروکسی سیستم";
 
   @override
-  String get zeroTrust => 'حساب سازمانی';
+  String get clearLogs => "پاک کردن گزارش‌ها";
 
   @override
-  String get zeroTrustDesc => 'اتصال با اکانت Zero Trust کلادفلر به جای حساب عمومی';
+  String get confirm => "تأیید";
 
   @override
-  String get zeroTrustOff => 'خاموش';
+  String get connectAction => "اتصال";
 
   @override
-  String get zeroTrustTeam => 'نام تیم';
+  String get connectionFailedRetry => "تونل برقرار نشد. پروتکل یا حالت اسکن دیگری را امتحان کنید.";
 
   @override
-  String get zeroTrustTeamDesc => 'همان نامی که در نشانی <team>.cloudflareaccess.com دارید';
+  String get copiedToClipboard => "در کلیپ‌بورد کپی شد";
 
   @override
-  String get zeroTrustToken => 'توکن ورود';
+  String get copyLogs => "کپی گزارش‌ها";
 
   @override
-  String get zeroTrustTokenDesc => 'در مرورگر وارد <team>.cloudflareaccess.com/warp شوید و توکن را اینجا بچسبانید';
+  String get dataCheck => "بررسی عبور داده";
 
   @override
-  String get zeroTrustServiceToken => 'توکن سرویس';
+  String get dataCheckDesc => "تا وقتی داده واقعی رد و بدل نشده، متصل اعلام نکند";
 
   @override
-  String get zeroTrustClientId => 'شناسه کلاینت';
+  String get detectingLocation => "در حال تشخیص موقعیت";
 
   @override
-  String get zeroTrustClientSecret => 'رمز کلاینت';
+  String get disconnectAction => "قطع اتصال";
 
   @override
-  String get zeroTrustGateway => 'عبور از گیت‌وی سازمان';
+  String get dnsOverride => "DNS از داخل تونل";
 
   @override
-  String get zeroTrustGatewayDesc => 'فیلترینگ و لاگ سازمان اعمال می‌شود. یک واسطه به تونل اضافه می‌کند و گردش شما در وب ثبت می‌شود.';
+  String get dnsOverrideDesc => "درخواست‌های DNS به جای سرور اپراتور، از تونل می‌روند";
 
   @override
-  String get zeroTrustReady => 'آماده اتصال';
+  String get dnsServers => "سرورهای DNS";
 
   @override
-  String get zeroTrustNeedsToken => 'یک ایمیل، توکن ورود یا توکن سرویس اضافه کنید';
+  String get dnsServersDesc => "وقتی تونل روشن است از این سرورها استفاده می‌شود";
 
   @override
-  String get zeroTrustSet => 'تنظیم شده';
+  String get downloaded => "دریافت";
 
   @override
-  String get zeroTrustClear => 'پاک کردن حساب سازمانی';
+  String get duration => "مدت اتصال";
 
   @override
-  String get zeroTrustEmail => 'نشانی ایمیل';
+  String get ech => "پنهان‌سازی نام سایت";
 
   @override
-  String get zeroTrustEmailDesc => 'ساده‌ترین راه ورود. کلادفلر هنگام اتصال یک کد یک‌بارمصرف ایمیل می‌کند و برنامه آن را از شما می‌پرسد.';
+  String get echDesc => "نام سایتی که به آن وصل می‌شوید را از دید شبکه پنهان می‌کند";
 
   @override
-  String get zeroTrustSignIn => 'روش ورود';
+  String get endpoint => "سرور";
 
   @override
-  String get zeroTrustCodeTitle => 'کد ورود';
+  String get endpointAuto => "خودکار";
 
   @override
-  String get zeroTrustCodeBody => 'کدی به {email} ایمیل شد. برای کامل شدن ورود آن را وارد کنید.';
+  String get endpointDesc => "اگر سرور مشخصی می‌خواهید بنویسید، وگرنه خالی بگذارید تا خودش پیدا کند";
 
   @override
-  String get zeroTrustCodeRetry => 'این کد پذیرفته نشد. ایمیل را ببینید و دوباره تلاش کنید.';
+  String get endpointManualHint => "خالی باشد، خودش بهترین سرور را پیدا می‌کند";
 
   @override
-  String get zeroTrustCodePlaceholder => 'کد داخل ایمیل';
+  String get exitConfirm => "برای خروج دوباره بازگشت را بزنید";
 
   @override
-  String get zeroTrustCodeSend => 'ورود';
+  String get exitLocation => "خروجی اتصال";
 
   @override
-  String get zeroTrustCodeLost => 'هسته دیگر منتظر کد نیست';
+  String get exitNode => "گره خروج";
 
   @override
-  String get notificationConnected => 'تونل فعال است';
+  String get fragment => "تکه‌تکه فرستادن";
 
   @override
-  String get notificationConnecting => 'در حال برقراری تونل';
+  String get fragmentDelay => "تأخیر قطعه";
 
   @override
-  String get notificationDisconnect => 'قطع اتصال';
+  String get fragmentDesc => "شروع اتصال را تکه‌تکه می‌فرستد تا فیلترینگ نتواند آن را بشناسد";
 
   @override
-  String get sectionRules => 'مسیر ترافیک';
+  String get fragmentNeedsHttp2 => "فقط در حالت HTTP/2 کار می‌کند";
 
   @override
-  String get advancedDesc => 'DNS، پورت، مسیر ترافیک و تنظیمات دقیق‌تر';
+  String get fragmentSize => "اندازه قطعه";
 
   @override
-  String get ruleBlock => 'سایت‌های مسدود';
+  String get fullTunnelDesc => "همه برنامه‌ها از تونل می‌روند، نه فقط پورت SOCKS5";
 
   @override
-  String get ruleBlockDesc => 'به این آدرس‌ها اجازه باز شدن داده نمی‌شود';
+  String get gatewayAutoHint => "ایتر سریع‌ترین سرور سالم را خودش انتخاب می‌کند";
 
   @override
-  String get ruleDirect => 'بدون تونل';
+  String get gatewayLabel => "دروازه";
 
   @override
-  String get ruleDirectDesc => 'این آدرس‌ها با اینترنت خودتان باز می‌شوند، نه از تونل';
+  String get geoUnavailable => "موقعیت شناسایی نشد";
 
   @override
-  String get ruleNone => 'خالی';
+  String get h2Endpoint => "سرور HTTP/2";
 
   @override
-  String get ruleHint => 'هر آدرس را در یک خط بنویسید. می‌توانید نام سایت، آدرس آی‌پی یا شماره پورت بدهید.';
+  String get h2EndpointDesc => "سروری که در حالت HTTP/2 استفاده می‌شود";
 
   @override
-  String get sectionApp => 'برنامه';
+  String get introBody => "اوبلیوین ترافیک شما را از هسته ایتر می‌برد تا شبکه‌ای که در آن هستید نتواند آن را بخواند یا دستکاری کند.";
 
   @override
-  String get protocolMasque => 'MASQUE';
+  String get introContinue => "ادامه";
 
   @override
-  String get protocolMasqueDesc => 'ترانسپورت مدرن QUIC/HTTP-3، بهترین گزینه روی شبکه‌های سالم';
+  String get introCredit => "با تلاش #یوسف_قبادی و ده‌ها کنشگر شناخته‌شده و ناشناس، برای اینکه دسترسی آزاد به اینترنت حق همه باشد.";
 
   @override
-  String get protocolWireGuard => 'WireGuard';
+  String get introFeatureAccountBody => "در اولین اجرا یک هویت اختصاصی ساخته می‌شود.";
 
   @override
-  String get protocolWireGuardDesc => 'تونل کلاسیک WARP با کمترین سرباز';
+  String get introFeatureAccountTitle => "بدون ثبت‌نام";
 
   @override
-  String get protocolGool => 'Gool';
+  String get introFeatureControlBody => "تونل تفکیکی، DNS دلخواه و کنترل پروتکل.";
 
   @override
-  String get protocolGoolDesc => 'وارپ داخل وارپ، کندتر ولی سخت‌تر مسدود می‌شود';
+  String get introFeatureControlTitle => "انتخاب مسیر ترافیک";
 
   @override
-  String get transport => 'روش اتصال';
+  String get introFeatureTunnelBody => "تونلی که شبیه ترافیک معمولی HTTPS دیده می‌شود.";
 
   @override
-  String get transportH3 => 'HTTP/3 روی QUIC';
+  String get introFeatureTunnelTitle => "MASQUE روی QUIC";
 
   @override
-  String get transportH3Desc => 'سریع‌تر است، ولی شبکه باید UDP را باز گذاشته باشد';
+  String get introFooter => "آزاد و متن‌باز · GPL-3.0";
 
   @override
-  String get transportH2 => 'HTTP/2 روی TCP';
+  String get introGetStarted => "شروع کنیم";
 
   @override
-  String get transportH2Desc => 'شبیه یک سایت معمولی دیده می‌شود، وقتی UDP بسته است این را بزنید';
+  String get introHeadline => "پیش‌فرض، خصوصی";
 
   @override
-  String get scanMode => 'حالت اسکن';
+  String get introMeaning => "به معنای «بی‌خبری، فراموشی»";
 
   @override
-  String get scanTurbo => 'توربو';
+  String get introSegaro => "#سگارو";
 
   @override
-  String get scanTurboDesc => 'سریع، اولین گیت‌وی سالم را می‌گیرد';
+  String get introSlogan => "اینترنت برای همه، یا هیچ‌کس";
 
   @override
-  String get scanBalanced => 'متعادل';
+  String get introYousef => "#یوسف_قبادی";
 
   @override
-  String get scanBalancedDesc => 'تعادل بین سرعت و پایداری';
+  String get ipDual => "هر دو";
 
   @override
-  String get scanThorough => 'کامل';
+  String get ipV4 => "IPv4";
 
   @override
-  String get scanThoroughDesc => 'جست‌وجوی عمیق‌تر، انتخاب کم‌تأخیرترین';
+  String get ipV6 => "IPv6";
 
   @override
-  String get scanStealth => 'پنهان';
+  String get ipVersion => "نسخه IP";
 
   @override
-  String get scanStealthDesc => 'آرام و صبور، سر و صدای کمتر روی شبکه';
+  String get language => "زبان";
 
   @override
-  String get scanIronclad => 'آیرون‌کلاد';
+  String get licenceActivate => "فعال‌سازی و ورود";
 
   @override
-  String get scanIroncladDesc => 'برای هر کاندید تونل واقعی می‌سازد و درخواست HTTP واقعی می‌فرستد';
+  String get licenceDaysLeft => "روز باقی مانده";
 
   @override
-  String get obfuscation => 'مخفی‌سازی';
+  String get licenceEnterCode => "کد اشتراک را وارد کنید";
 
   @override
-  String get obfuscationOff => 'خاموش';
+  String get licenceEntryTitle => "کد اشتراک خود را وارد کنید";
 
   @override
-  String get obfuscationLight => 'سبک';
+  String get licenceExpired => "کد اشتراک شما به پایان رسیده است. کد جدید بگیرید";
 
   @override
-  String get obfuscationBalanced => 'متعادل';
+  String get licenceExpiredTitle => "اشتراک شما به پایان رسیده";
 
   @override
-  String get obfuscationAggressive => 'تهاجمی';
+  String get licenceInvalid => "کد اشتراک معتبر نیست";
 
   @override
-  String get endpoint => 'سرور';
+  String get licencePlaceholder => "SASA-…";
 
   @override
-  String get endpointDesc => 'اگر سرور مشخصی می‌خواهید بنویسید، وگرنه خالی بگذارید تا خودش پیدا کند';
+  String get licenceSubtitle => "برای ورود به برنامه، کد اشتراک خود را وارد کنید";
 
   @override
-  String get endpointAuto => 'خودکار';
+  String get licenceTitle => "کد اشتراک";
 
   @override
-  String get ipVersion => 'نسخه IP';
+  String get locationUnknown => "نامشخص";
 
   @override
-  String get ipV4 => 'IPv4';
+  String get logLevel => "سطح گزارش";
 
   @override
-  String get ipV6 => 'IPv6';
+  String get logLevelDebug => "دیباگ";
 
   @override
-  String get ipDual => 'هر دو';
+  String get logLevelError => "خطا";
 
   @override
-  String get socksPort => 'پورت SOCKS5';
+  String get logLevelInfo => "معمولی";
 
   @override
-  String get socksPortDesc => 'پورت لوکالی که هسته روی آن گوش می‌دهد';
+  String get logLevelTrace => "کامل";
 
   @override
-  String get allowLan => 'دسترسی از شبکه محلی';
+  String get logLevelWarn => "هشدار";
 
   @override
-  String get allowLanDesc => 'دستگاه‌های دیگر شبکه هم بتوانند از این پروکسی استفاده کنند';
+  String get logs => "گزارش‌ها";
 
   @override
-  String get proxyOnly => 'فقط حالت پروکسی';
+  String get logsAll => "همه";
 
   @override
-  String get proxyOnlyDesc => 'بدون گرفتن ترافیک دستگاه، تنها SOCKS5 باز شود';
+  String get logsCopied => "در کلیپ‌بورد کپی شد";
 
   @override
-  String get splitTunnel => 'تونل انتخابی';
+  String get logsEmpty => "هنوز گزارشی نیست. یک بار وصل شوید تا اینجا نمایش داده شود.";
 
   @override
-  String get splitTunnelDesc => 'انتخاب اپ‌هایی که از تونل عبور نکنند';
+  String get logsFilterEmpty => "چیزی پیدا نشد";
 
   @override
-  String get splitTunnelDisabled => 'غیرفعال';
+  String get logsLive => "زنده از هسته";
 
   @override
-  String get splitTunnelDisabledDesc => 'ترافیک همه اپ‌ها از تونل رد می‌شود';
+  String get logsSourceAether => "Aether";
 
   @override
-  String get splitTunnelBlacklist => 'عبور موارد انتخابی';
+  String get logsSourceHev => "تونل";
 
   @override
-  String get splitTunnelBlacklistDesc => 'اپ‌های انتخاب‌شده از تونل رد نمی‌شوند';
+  String get mapAttribution => "داده‌های نقشه از مشارکت‌کنندگان OpenStreetMap";
 
   @override
-  String get showSystemApps => 'نمایش اپ‌های سیستمی';
+  String get mapExit => "خروج";
 
   @override
-  String get searchApps => 'جست‌وجوی اپ';
+  String get mapYou => "شما";
 
   @override
-  String get fragment => 'تکه‌تکه فرستادن';
+  String get memorialBody => "مردمی بی‌سلاح که به دست نیروهای جمهوری اسلامی کشته شدند";
 
   @override
-  String get fragmentDesc => 'شروع اتصال را تکه‌تکه می‌فرستد تا فیلترینگ نتواند آن را بشناسد';
+  String get memorialTitle => "به یاد کشته‌شدگان ۱۸ و ۱۹ دی";
 
   @override
-  String get logLevel => 'سطح گزارش';
+  String get memorialVow => "نه می‌بخشیم، نه فراموش می‌کنیم";
 
   @override
-  String get logLevelError => 'خطا';
+  String get metricDownload => "دریافت";
 
   @override
-  String get logLevelWarn => 'هشدار';
+  String get metricSocks => "SOCKS5";
 
   @override
-  String get logLevelInfo => 'معمولی';
+  String get metricUpload => "ارسال";
 
   @override
-  String get logLevelDebug => 'دیباگ';
+  String get notificationChannelDesc => "نشان می‌دهد تونل بالاست و امکان قطع کردن می‌دهد";
 
   @override
-  String get logLevelTrace => 'کامل';
+  String get notificationChannelName => "وضعیت تونل";
 
   @override
-  String get perfProfile => 'پروفایل مصرف منابع';
+  String get notificationConnected => "تونل فعال است";
 
   @override
-  String get perfProfileDesc => 'میزان پردازنده و حافظه‌ای که هسته می‌تواند بگیرد';
+  String get notificationConnecting => "در حال برقراری تونل";
 
   @override
-  String get perfAuto => 'خودکار';
+  String get notificationDisconnect => "قطع اتصال";
 
   @override
-  String get perfLow => 'کم';
+  String get notificationPermissionBody => "اوبلیوین برای زنده نگه داشتن تونل در پس‌زمینه به نوتیفیکیشن نیاز دارد";
 
   @override
-  String get perfMedium => 'متوسط';
+  String get notificationPermissionTitle => "اجازه نوتیفیکیشن";
 
   @override
-  String get perfHigh => 'زیاد';
+  String get notificationTitle => "اوبلیوین";
 
   @override
-  String get quickReconnect => 'اتصال سریع مجدد';
+  String get obfuscation => "مخفی‌سازی";
 
   @override
-  String get quickReconnectDesc => 'قبل از اسکن کامل، آخرین گیت‌وی سالم را امتحان کن';
+  String get obfuscationAggressive => "تهاجمی";
 
   @override
-  String get resetSettings => 'بازنشانی تنظیمات';
+  String get obfuscationBalanced => "متعادل";
 
   @override
-  String get resetSettingsDesc => 'برگرداندن همه چیز به حالت پیش‌فرض';
+  String get obfuscationLight => "سبک";
 
   @override
-  String get resetConfirmTitle => 'تنظیمات بازنشانی شود؟';
+  String get obfuscationOff => "خاموش";
 
   @override
-  String get resetConfirmBody => 'همه تنظیمات به مقدار پیش‌فرض برمی‌گردد. هویت ذخیره‌شده شما حفظ می‌شود.';
+  String get perfAuto => "خودکار";
 
   @override
-  String get cancel => 'لغو';
+  String get perfHigh => "زیاد";
 
   @override
-  String get confirm => 'تأیید';
+  String get perfLow => "کم";
 
   @override
-  String get save => 'ذخیره';
+  String get perfMedium => "متوسط";
 
   @override
-  String get copyLogs => 'کپی گزارش‌ها';
+  String get perfProfile => "پروفایل مصرف منابع";
 
   @override
-  String get clearLogs => 'پاک کردن گزارش‌ها';
+  String get perfProfileDesc => "میزان پردازنده و حافظه‌ای که هسته می‌تواند بگیرد";
 
   @override
-  String get logsEmpty => 'هنوز گزارشی نیست. یک بار وصل شوید تا اینجا نمایش داده شود.';
+  String get protocol => "پروتکل";
 
   @override
-  String get copiedToClipboard => 'در کلیپ‌بورد کپی شد';
+  String get protocolGool => "Gool";
 
   @override
-  String get aboutBody => 'ساسا وی‌پی‌ان شما را از طریق کلودفلر وارپ به اینترنت وصل می‌کند. هسته تونل، ایترِ متن‌باز است که ترافیک را روی MASQUE و WireGuard می‌برد.';
+  String get protocolGoolDesc => "وارپ داخل وارپ، کندتر ولی سخت‌تر مسدود می‌شود";
 
   @override
-  String get aboutCore => 'هسته';
+  String get protocolMasque => "MASQUE";
 
   @override
-  String get aboutVersion => 'نسخه';
+  String get protocolMasqueDesc => "ترانسپورت مدرن QUIC/HTTP-3، بهترین گزینه روی شبکه‌های سالم";
 
   @override
-  String get aboutSource => 'کد منبع';
+  String get protocolWireGuard => "WireGuard";
 
   @override
-  String get aboutLicense => 'مجوز';
+  String get protocolWireGuardDesc => "تونل کلاسیک WARP با کمترین سرباز";
 
   @override
-  String get vpnPermissionNeeded => 'برای عبور دادن ترافیک، اجازه VPN لازم است';
+  String get proxyOnly => "فقط حالت پروکسی";
 
   @override
-  String get vpnPermissionDenied => 'اجازه داده نشد، تونل نمی‌تواند شروع شود';
+  String get proxyOnlyDesc => "بدون گرفتن ترافیک دستگاه، تنها SOCKS5 باز شود";
 
   @override
-  String get connectionFailedRetry => 'تونل برقرار نشد. پروتکل یا حالت اسکن دیگری را امتحان کنید.';
+  String get quickReconnect => "اتصال سریع مجدد";
 
   @override
-  String get exitConfirm => 'برای خروج دوباره بازگشت را بزنید';
+  String get quickReconnectDesc => "قبل از اسکن کامل، آخرین گیت‌وی سالم را امتحان کن";
 
   @override
-  String get notificationTitle => 'اوبلیوین';
+  String get rangeHint => "یک عدد یا یک بازه مثل ۱۶-۳۲";
 
   @override
-  String get mapAttribution => 'داده‌های نقشه از مشارکت‌کنندگان OpenStreetMap';
+  String get reconnectSeconds => "تأخیر اتصال مجدد";
 
   @override
-  String get sectionTls => 'TLS و استتار';
+  String get reconnectSecondsDesc => "بعد از قطعی چند ثانیه صبر کند و دوباره وصل شود";
 
   @override
-  String get sectionReliability => 'پایداری';
+  String get releaseToConnect => "رها کنید تا وصل شود";
 
   @override
-  String get wgEndpoint => 'سرور وایرگارد';
+  String get resetConfirmBody => "همه تنظیمات به مقدار پیش‌فرض برمی‌گردد. هویت ذخیره‌شده شما حفظ می‌شود.";
 
   @override
-  String get wgEndpointDesc => 'خالی بگذارید تا خودش انتخاب کند';
+  String get resetConfirmTitle => "تنظیمات بازنشانی شود؟";
 
   @override
-  String get h2Endpoint => 'سرور HTTP/2';
+  String get resetSettings => "بازنشانی تنظیمات";
 
   @override
-  String get h2EndpointDesc => 'سروری که در حالت HTTP/2 استفاده می‌شود';
+  String get resetSettingsDesc => "برگرداندن همه چیز به حالت پیش‌فرض";
 
   @override
-  String get ech => 'پنهان‌سازی نام سایت';
+  String get retryAction => "تلاش دوباره";
 
   @override
-  String get echDesc => 'نام سایتی که به آن وصل می‌شوید را از دید شبکه پنهان می‌کند';
+  String get routingMode => "حالت مسیریابی";
 
   @override
-  String get fragmentSize => 'اندازه قطعه';
+  String get routingSocks => "فقط SOCKS5";
 
   @override
-  String get fragmentDelay => 'تأخیر قطعه';
+  String get routingSocksDesc => "فقط برنامه‌هایی که خودتان به پورت محلی وصل کنید از تونل می‌روند";
 
   @override
-  String get rangeHint => 'یک عدد یا یک بازه مثل ۱۶-۳۲';
+  String get routingSystem => "پروکسی سیستم";
 
   @override
-  String get tlsGroups => 'گروه‌های کلید TLS';
+  String get routingSystemDesc => "پروکسی را برای همه برنامه‌ها تنظیم می‌کند، به دسترسی مدیر نیاز ندارد";
 
   @override
-  String get tlsGroupsDesc => 'گروه‌های کلیدی که در هندشیک پیشنهاد می‌شود';
+  String get routingTunnelDesc => "همه ترافیک دستگاه از تونل می‌رود، به دسترسی مدیر نیاز دارد";
 
   @override
-  String get dataCheck => 'بررسی عبور داده';
+  String get routingTunnelDescMobile => "همه ترافیک دستگاه از تونل می‌رود";
 
   @override
-  String get dataCheckDesc => 'تا وقتی داده واقعی رد و بدل نشده، متصل اعلام نکند';
+  String get ruleBlock => "سایت‌های مسدود";
 
   @override
-  String get validateSeconds => 'مهلت بررسی';
+  String get ruleBlockDesc => "به این آدرس‌ها اجازه باز شدن داده نمی‌شود";
 
   @override
-  String get validateSecondsDesc => 'چند ثانیه صبر کند تا مطمئن شود تونل کار می‌کند';
+  String get ruleDirect => "بدون تونل";
 
   @override
-  String get reconnectSeconds => 'تأخیر اتصال مجدد';
+  String get ruleDirectDesc => "این آدرس‌ها با اینترنت خودتان باز می‌شوند، نه از تونل";
 
   @override
-  String get reconnectSecondsDesc => 'بعد از قطعی چند ثانیه صبر کند و دوباره وصل شود';
+  String get ruleHint => "هر آدرس را در یک خط بنویسید. می‌توانید نام سایت، آدرس آی‌پی یا شماره پورت بدهید.";
 
   @override
-  String get wgKeepalive => 'فاصله سیگنال زنده‌ماندن';
+  String get ruleNone => "خالی";
 
   @override
-  String get wgKeepaliveDesc => 'هر چند ثانیه یک بسته کوچک بفرستد تا اتصال باز بماند';
+  String get save => "ذخیره";
 
   @override
-  String get wgProfileRetry => 'امتحان پروفایل‌های دیگر';
+  String get scanBalanced => "متعادل";
 
   @override
-  String get wgProfileRetryDesc => 'در طول اسکن پروفایل‌های مخفی‌سازی دیگر هم امتحان شود';
+  String get scanBalancedDesc => "تعادل بین سرعت و پایداری";
 
   @override
-  String get tabHome => 'سپر';
+  String get scanIronclad => "آیرون‌کلاد";
 
   @override
-  String get slideToConnect => 'برای اتصال بکشید';
+  String get scanIroncladDesc => "برای هر کاندید تونل واقعی می‌سازد و درخواست HTTP واقعی می‌فرستد";
 
   @override
-  String get releaseToConnect => 'رها کنید تا وصل شود';
+  String get scanMode => "حالت اسکن";
 
   @override
-  String get aboutApp => 'مخزن برنامه';
+  String get scanStealth => "پنهان";
 
   @override
-  String get aboutCoreRepo => 'مخزن هسته';
+  String get scanStealthDesc => "آرام و صبور، سر و صدای کمتر روی شبکه";
 
   @override
-  String get aboutCredits => 'ساخته‌شده بر پایه';
+  String get scanThorough => "کامل";
 
   @override
-  String get aboutFooter => 'ساسا وی‌پی‌ان بر پایه ShadowRay ساخته شده است. هسته تونل، ایترِ ساخته Cluvex Studio است.';
+  String get scanThoroughDesc => "جست‌وجوی عمیق‌تر، انتخاب کم‌تأخیرترین";
 
   @override
-  String get connectAction => 'اتصال';
+  String get scanTurbo => "توربو";
 
   @override
-  String get disconnectAction => 'قطع اتصال';
+  String get scanTurboDesc => "سریع، اولین گیت‌وی سالم را می‌گیرد";
 
   @override
-  String get retryAction => 'تلاش دوباره';
+  String get scannerOff => "جست‌وجو خاموش است و همان سروری که دادید استفاده می‌شود";
 
   @override
-  String get tunnelModeSection => 'تونل دستگاه';
+  String get searchApps => "جست‌وجوی اپ";
 
   @override
-  String get tunnelInterface => 'نام اینترفیس';
+  String get sectionAdvanced => "پیشرفته";
 
   @override
-  String get tunnelInterfaceDesc => 'نام کارت شبکه مجازی';
+  String get sectionApp => "برنامه";
 
   @override
-  String get tunnelMtu => 'MTU';
+  String get sectionCore => "هسته";
 
   @override
-  String get tunnelMtuDesc => 'اندازه بسته‌ها. اگر اتصال کند است کمترش کنید';
+  String get sectionDevice => "دستگاه";
 
   @override
-  String get tunnelDeviceState => 'وضعیت دستگاه';
+  String get sectionDeviceTunnel => "تونل دستگاه";
 
   @override
-  String get tunnelDeviceEmbedded => 'تعبیه شده';
+  String get sectionNetwork => "شبکه";
 
   @override
-  String get tunnelDeviceMissing => 'تعبیه نشده';
+  String get sectionReliability => "پایداری";
 
   @override
-  String get tunnelNeedsPrivileges => 'نیازمند دسترسی مدیر';
+  String get sectionRules => "مسیر ترافیک";
 
   @override
-  String get tunnelReady => 'آماده';
+  String get sectionTls => "TLS و استتار";
 
   @override
-  String get tunnelModeActive => 'تونل کامل دستگاه';
+  String get settings => "تنظیمات";
 
   @override
-  String get tunnelModeProxy => 'تنها پروکسی';
+  String get settingsSubtitle => "هسته ایتر · {version}";
 
   @override
-  String get logsAll => 'همه';
+  String get showSystemApps => "نمایش اپ‌های سیستمی";
 
   @override
-  String get logsSourceAether => 'Aether';
+  String get sinceLabel => "از {time}";
 
   @override
-  String get logsSourceHev => 'تونل';
+  String get slideToConnect => "برای اتصال بکشید";
 
   @override
-  String get logsFilterEmpty => 'چیزی پیدا نشد';
+  String get socksPort => "پورت SOCKS5";
 
   @override
-  String get logsCopied => 'در کلیپ‌بورد کپی شد';
+  String get socksPortDesc => "پورت لوکالی که هسته روی آن گوش می‌دهد";
 
   @override
-  String get introSlogan => 'اینترنت برای همه، یا هیچ‌کس';
+  String get splitBypassCount => "{count} برنامه از تونل خارج می‌شوند";
 
   @override
-  String get trayShow => 'نمایش اوبلیوین';
+  String get splitHeaderSubtitle => "برنامه‌های این فهرست کامل از تونل خارج می‌شوند";
 
   @override
-  String get trayHide => 'کوچک‌سازی در نوار';
+  String get splitTunnel => "تونل انتخابی";
 
   @override
-  String get trayQuit => 'خروج';
+  String get splitTunnelBlacklist => "عبور موارد انتخابی";
 
   @override
-  String get trayStageIdle => 'قطع';
+  String get splitTunnelBlacklistDesc => "اپ‌های انتخاب‌شده از تونل رد نمی‌شوند";
 
   @override
-  String get trayStageBusy => 'در حال اتصال';
+  String get splitTunnelDesc => "انتخاب اپ‌هایی که از تونل عبور نکنند";
 
   @override
-  String get trayStageActive => 'متصل';
+  String get splitTunnelDisabled => "غیرفعال";
 
   @override
-  String get fragmentNeedsHttp2 => 'فقط در حالت HTTP/2 کار می‌کند';
+  String get splitTunnelDisabledDesc => "ترافیک همه اپ‌ها از تونل رد می‌شود";
 
   @override
-  String get transportUdp => 'UDP';
+  String get stateConnected => "متصل";
 
   @override
-  String get transportWiw => 'WARP در WARP';
+  String get stateConnecting => "در حال اتصال";
 
   @override
-  String get dnsOverride => 'DNS از داخل تونل';
+  String get stateDisconnected => "متصل نیست";
 
   @override
-  String get dnsOverrideDesc => 'درخواست‌های DNS به جای سرور اپراتور، از تونل می‌روند';
+  String get stateDisconnecting => "در حال قطع";
 
   @override
-  String get dnsServers => 'سرورهای DNS';
+  String get stateFailed => "اتصال برقرار نشد";
 
   @override
-  String get dnsServersDesc => 'وقتی تونل روشن است از این سرورها استفاده می‌شود';
+  String get stateValidating => "بررسی سلامت تونل";
 
   @override
-  String get switchOff => 'خاموش';
+  String get supportChannel => "پشتیبانی @SasaX60";
 
   @override
-  String get switchOn => 'ایمن';
+  String get supportLabel => "پشتیبانی";
 
   @override
-  String get chipFullTunnel => 'تونل کامل';
+  String get switchOff => "خاموش";
 
   @override
-  String get chipProxyOnly => 'فقط پروکسی';
+  String get switchOn => "ایمن";
 
   @override
-  String get chipNotProtected => 'محافظت نشده';
+  String get tabHome => "سپر";
 
   @override
-  String get trafficUnprotected => 'ترافیک شما محافظت نشده است';
+  String get tapToConnect => "برای اتصال بزنید";
 
   @override
-  String get sinceLabel => 'از {time}';
+  String get tapToDisconnect => "برای قطع بزنید";
 
   @override
-  String get exitNode => 'گره خروج';
+  String get theme => "پوسته";
 
   @override
-  String get gatewayLabel => 'دروازه';
+  String get themeDark => "تیره";
 
   @override
-  String get gatewayAutoHint => 'ایتر سریع‌ترین سرور سالم را خودش انتخاب می‌کند';
+  String get themeLight => "روشن";
 
   @override
-  String get metricDownload => 'دریافت';
+  String get themeSystem => "سیستم";
 
   @override
-  String get metricUpload => 'ارسال';
+  String get tlsGroups => "گروه‌های کلید TLS";
 
   @override
-  String get metricSocks => 'SOCKS5';
+  String get tlsGroupsDesc => "گروه‌های کلیدی که در هندشیک پیشنهاد می‌شود";
 
   @override
-  String get unitPort => 'پورت';
+  String get trafficUnprotected => "ترافیک شما محافظت نشده است";
 
   @override
-  String get mapYou => 'شما';
+  String get transport => "روش اتصال";
 
   @override
-  String get mapExit => 'خروج';
+  String get transportH2 => "HTTP/2 روی TCP";
 
   @override
-  String get settingsSubtitle => 'هسته ایتر · {version}';
+  String get transportH2Desc => "شبیه یک سایت معمولی دیده می‌شود، وقتی UDP بسته است این را بزنید";
 
   @override
-  String get fullTunnelDesc => 'همه برنامه‌ها از تونل می‌روند، نه فقط پورت SOCKS5';
+  String get transportH3 => "HTTP/3 روی QUIC";
 
   @override
-  String get sectionDeviceTunnel => 'تونل دستگاه';
+  String get transportH3Desc => "سریع‌تر است، ولی شبکه باید UDP را باز گذاشته باشد";
 
   @override
-  String get sectionDevice => 'دستگاه';
+  String get transportUdp => "UDP";
 
   @override
-  String get logsLive => 'زنده از هسته';
+  String get transportWiw => "WARP در WARP";
 
   @override
-  String get aboutInMemory => 'به یاد';
+  String get trayHide => "کوچک‌سازی در نوار";
 
   @override
-  String get aboutHev => 'hev-socks5-tunnel';
+  String get trayQuit => "خروج";
 
   @override
-  String get aboutHevDesc => 'دستگاه tun که بسته‌های شما را جابه‌جا می‌کند';
+  String get trayShow => "نمایش اوبلیوین";
 
   @override
-  String get aboutAppSummary => 'اپ {app} · هسته ایتر {core}';
+  String get trayStageActive => "متصل";
 
   @override
-  String get introHeadline => 'پیش‌فرض، خصوصی';
+  String get trayStageBusy => "در حال اتصال";
 
   @override
-  String get introBody => 'اوبلیوین ترافیک شما را از هسته ایتر می‌برد تا شبکه‌ای که در آن هستید نتواند آن را بخواند یا دستکاری کند.';
+  String get trayStageIdle => "قطع";
 
   @override
-  String get introFeatureTunnelTitle => 'MASQUE روی QUIC';
+  String get tunnelDegraded => "فقط پروکسی محلی روشن است، ترافیک دستگاه از تونل نمی‌رود";
 
   @override
-  String get introFeatureTunnelBody => 'تونلی که شبیه ترافیک معمولی HTTPS دیده می‌شود.';
+  String get tunnelDegradedHint => "برای تونل کامل، برنامه باید با دسترسی مدیر اجرا شود";
 
   @override
-  String get introFeatureAccountTitle => 'بدون ثبت‌نام';
+  String get tunnelDeviceEmbedded => "تعبیه شده";
 
   @override
-  String get introFeatureAccountBody => 'در اولین اجرا یک هویت اختصاصی ساخته می‌شود.';
+  String get tunnelDeviceMissing => "تعبیه نشده";
 
   @override
-  String get introFeatureControlTitle => 'انتخاب مسیر ترافیک';
+  String get tunnelDeviceState => "وضعیت دستگاه";
 
   @override
-  String get introFeatureControlBody => 'تونل تفکیکی، DNS دلخواه و کنترل پروتکل.';
+  String get tunnelInterface => "نام اینترفیس";
 
   @override
-  String get introGetStarted => 'شروع کنیم';
+  String get tunnelInterfaceDesc => "نام کارت شبکه مجازی";
 
   @override
-  String get introFooter => 'آزاد و متن‌باز · GPL-3.0';
+  String get tunnelModeActive => "تونل کامل دستگاه";
 
   @override
-  String get splitHeaderSubtitle => 'برنامه‌های این فهرست کامل از تونل خارج می‌شوند';
+  String get tunnelModeProxy => "تنها پروکسی";
 
   @override
-  String get splitBypassCount => '{count} برنامه از تونل خارج می‌شوند';
+  String get tunnelModeSection => "تونل دستگاه";
 
   @override
-  String get apply => 'اعمال';
+  String get tunnelMtu => "MTU";
 
   @override
-  String get geoUnavailable => 'موقعیت شناسایی نشد';
+  String get tunnelMtuDesc => "اندازه بسته‌ها. اگر اتصال کند است کمترش کنید";
 
   @override
-  String get routingMode => 'حالت مسیریابی';
+  String get tunnelNeedsPrivileges => "نیازمند دسترسی مدیر";
 
   @override
-  String get routingSocks => 'فقط SOCKS5';
+  String get tunnelReady => "آماده";
 
   @override
-  String get routingSocksDesc => 'فقط برنامه‌هایی که خودتان به پورت محلی وصل کنید از تونل می‌روند';
+  String get unitPort => "پورت";
 
   @override
-  String get routingSystem => 'پروکسی سیستم';
+  String get uploaded => "ارسال";
 
   @override
-  String get routingSystemDesc => 'پروکسی را برای همه برنامه‌ها تنظیم می‌کند، به دسترسی مدیر نیاز ندارد';
+  String get validateSeconds => "مهلت بررسی";
 
   @override
-  String get routingTunnelDesc => 'همه ترافیک دستگاه از تونل می‌رود، به دسترسی مدیر نیاز دارد';
+  String get validateSecondsDesc => "چند ثانیه صبر کند تا مطمئن شود تونل کار می‌کند";
 
   @override
-  String get chipSystemProxy => 'پروکسی سیستم';
+  String get vpnPermissionDenied => "اجازه داده نشد، تونل نمی‌تواند شروع شود";
 
   @override
-  String get chipSocksOnly => 'فقط SOCKS';
+  String get vpnPermissionNeeded => "برای عبور دادن ترافیک، اجازه VPN لازم است";
 
   @override
-  String get scannerOff => 'جست‌وجو خاموش است و همان سروری که دادید استفاده می‌شود';
+  String get wgEndpoint => "سرور وایرگارد";
 
   @override
-  String get endpointManualHint => 'خالی باشد، خودش بهترین سرور را پیدا می‌کند';
+  String get wgEndpointDesc => "خالی بگذارید تا خودش انتخاب کند";
 
   @override
-  String get notificationChannelName => 'وضعیت تونل';
+  String get wgKeepalive => "فاصله سیگنال زنده‌ماندن";
 
   @override
-  String get notificationChannelDesc => 'نشان می‌دهد تونل بالاست و امکان قطع کردن می‌دهد';
+  String get wgKeepaliveDesc => "هر چند ثانیه یک بسته کوچک بفرستد تا اتصال باز بماند";
 
   @override
-  String get notificationPermissionTitle => 'اجازه نوتیفیکیشن';
+  String get wgProfileRetry => "امتحان پروفایل‌های دیگر";
 
   @override
-  String get notificationPermissionBody => 'اوبلیوین برای زنده نگه داشتن تونل در پس‌زمینه به نوتیفیکیشن نیاز دارد';
+  String get wgProfileRetryDesc => "در طول اسکن پروفایل‌های مخفی‌سازی دیگر هم امتحان شود";
 
   @override
-  String get licenceTitle => 'کد اشتراک';
+  String get yourLocation => "موقعیت شما";
 
   @override
-  String get licenceSubtitle => 'برای ورود به برنامه، کد اشتراک خود را وارد کنید';
+  String get zeroTrust => "حساب سازمانی";
 
   @override
-  String get licenceExpired => 'کد اشتراک شما به پایان رسیده است. کد جدید بگیرید';
+  String get zeroTrustClear => "پاک کردن حساب سازمانی";
 
   @override
-  String get licenceEnterCode => 'کد اشتراک را وارد کنید';
+  String get zeroTrustClientId => "شناسه کلاینت";
 
   @override
-  String get licencePlaceholder => 'SASA-…';
+  String get zeroTrustClientSecret => "رمز کلاینت";
 
   @override
-  String get licenceActivate => 'فعال‌سازی و ورود';
+  String get zeroTrustCodeBody => "کدی به {email} ایمیل شد. برای کامل شدن ورود آن را وارد کنید.";
 
   @override
-  String get licenceInvalid => 'کد اشتراک معتبر نیست';
+  String get zeroTrustCodeLost => "هسته دیگر منتظر کد نیست";
 
   @override
-  String get supportLabel => 'پشتیبانی';
+  String get zeroTrustCodePlaceholder => "کد داخل ایمیل";
 
   @override
-  String get adminTitle => 'پنل مدیریت';
+  String get zeroTrustCodeRetry => "این کد پذیرفته نشد. ایمیل را ببینید و دوباره تلاش کنید.";
 
   @override
-  String get adminLockPrompt => 'برای ورود به پنل مدیریت رمز قفل را وارد کنید';
+  String get zeroTrustCodeSend => "ورود";
 
   @override
-  String get adminLockPlaceholder => 'رمز قفل';
+  String get zeroTrustCodeTitle => "کد ورود";
 
   @override
-  String get adminUnlock => 'ورود';
+  String get zeroTrustDesc => "اتصال با اکانت Zero Trust کلادفلر به جای حساب عمومی";
 
   @override
-  String get adminLockWrong => 'رمز قفل اشتباه است';
+  String get zeroTrustEmail => "نشانی ایمیل";
 
   @override
-  String get adminLockTooShort => 'رمز قفل باید حداقل ۶ کاراکتر باشد';
+  String get zeroTrustEmailDesc => "ساده‌ترین راه ورود. کلادفلر هنگام اتصال یک کد یک‌بارمصرف ایمیل می‌کند و برنامه آن را از شما می‌پرسد.";
 
   @override
-  String get adminLockChanged => 'رمز قفل تغییر کرد';
+  String get zeroTrustGateway => "عبور از گیت‌وی سازمان";
 
   @override
-  String get adminGenerate => 'تولید کد اشتراک';
+  String get zeroTrustGatewayDesc => "فیلترینگ و لاگ سازمان اعمال می‌شود. یک واسطه به تونل اضافه می‌کند و گردش شما در وب ثبت می‌شود.";
 
   @override
-  String get adminPlan => 'مدت اشتراک';
+  String get zeroTrustNeedsToken => "یک ایمیل، توکن ورود یا توکن سرویس اضافه کنید";
 
   @override
-  String get adminDevices => 'تعداد کاربر (دستگاه)';
+  String get zeroTrustOff => "خاموش";
 
   @override
-  String get adminDeviceUnit => 'کاربر';
+  String get zeroTrustReady => "آماده اتصال";
 
   @override
-  String get adminGenerateButton => 'تولید کد';
+  String get zeroTrustServiceToken => "توکن سرویس";
 
   @override
-  String get adminCodeReady => 'کد آماده است — کپی کنید';
+  String get zeroTrustSet => "تنظیم شده";
 
   @override
-  String get adminHistory => 'کدهای ساخته‌شده';
+  String get zeroTrustSignIn => "روش ورود";
 
   @override
-  String get adminHistoryEmpty => 'هنوز کدی ساخته نشده است';
+  String get zeroTrustTeam => "نام تیم";
 
   @override
-  String get adminChangeLock => 'تغییر رمز قفل پنل';
+  String get zeroTrustTeamDesc => "همان نامی که در نشانی <team>.cloudflareaccess.com دارید";
 
   @override
-  String get adminNewLockPlaceholder => 'رمز قفل جدید';
+  String get zeroTrustToken => "توکن ورود";
 
   @override
-  String get adminChangeLockButton => 'تغییر رمز';
+  String get zeroTrustTokenDesc => "در مرورگر وارد <team>.cloudflareaccess.com/warp شوید و توکن را اینجا بچسبانید";
 }

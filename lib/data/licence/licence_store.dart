@@ -18,6 +18,7 @@ class LicenceStore {
   static const String _kLicence = 'sasavpn.licence';
   static const String _kAdminLock = 'sasavpn.admin.lock';
   static const String _kAdminSeen = 'sasavpn.admin.seen';
+  static const String _kAdminLockChanged = 'sasavpn.admin.lock.changed';
   static const String _kMintedCodes = 'sasavpn.admin.minted';
 
   static const String _defaultAdminLock = 'SAZA-64243771B6EA04A0';
@@ -28,7 +29,15 @@ class LicenceStore {
 
   Future<void> setAdminLock(String code) async {
     await _prefs.setString(_kAdminLock, code);
+    await _markAdminLockChanged();
   }
+
+  /// True once the lock was changed from the shipped default. The panel uses
+  /// this to decide whether it has been set up on this device.
+  bool get adminLockChanged => _prefs.getBool(_kAdminLockChanged) ?? false;
+
+  Future<void> _markAdminLockChanged() =>
+      _prefs.setBool(_kAdminLockChanged, true);
 
   bool get adminSetupDone => _prefs.getBool(_kAdminSeen) ?? false;
   Future<void> markAdminSetupDone() async => _prefs.setBool(_kAdminSeen, true);

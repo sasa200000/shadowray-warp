@@ -75,14 +75,14 @@ jobs:
 
       - name: Rename APK
         run: |
-          cp build/app/outputs/flutter-apk/app-arm64-v8a-debug.apk SasaVPN-arm64-v1.0.apk
-          ls -la SasaVPN-arm64-v1.0.apk
+          cp build/app/outputs/flutter-apk/app-arm64-v8a-debug.apk SasaVPN-arm64-v1.2.apk
+          ls -la SasaVPN-arm64-v1.2.apk
 
       - name: Upload APK artifact
         uses: actions/upload-artifact@v4
         with:
           name: SasaVPN-arm64
-          path: SasaVPN-arm64-v1.0.apk
+          path: SasaVPN-arm64-v1.2.apk
           retention-days: 90
 
       # The token used for pushes has no release scope, so the APK is delivered
@@ -91,8 +91,8 @@ jobs:
         continue-on-error: true
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: v1.0
-          name: SasaVPN v1.0
-          files: SasaVPN-arm64-v1.0.apk
+          tag_name: v1.2
+          name: SasaVPN v1.2 — rainbow UI
+          files: SasaVPN-arm64-v1.2.apk
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

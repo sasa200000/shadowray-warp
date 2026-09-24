@@ -1,11 +1,9 @@
-import 'dart:math' show pi;
-import 'dart:ui';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 
 import '../../core/theme/app_theme.dart';
 import '../../data/models/tunnel_status.dart';
+import 'rainbow_border_dance.dart';
 
 /// The big connect button, wrapped in the light dance.
 ///
@@ -35,32 +33,29 @@ class ConnectSwitch extends StatelessWidget {
 
     final on = stage.isActive || stage.isBusy;
 
-    return Stack(
-      alignment: Alignment.center,
-      children: <Widget>[
-        SizedBox(
-          width: _width + 72,
-          height: _height + 72,
-          child: CustomPaint(painter: _HaloPainter(stage: stage)),
-        ),
-        _SwitchBody(
-          stage: stage,
-          on: on,
-          trackColor: switch (stage) {
-            TunnelStage.failed => palette.danger,
-            _ => on ? palette.primary : palette.track,
-          },
-          palette: palette,
-          onTap: () {
-            HapticFeedback.mediumImpact();
-            if (stage.isActive || stage.isBusy) {
-              onDisconnect();
-            } else {
-              onConnect();
-            }
-          },
-        ),
-      ],
+    return RainbowBorderDance(
+      active: on,
+      borderRadius: _height / 2,
+      borderWidth: on ? 5 : 2.5,
+      glow: on,
+      padding: const EdgeInsets.all(3),
+      child: _SwitchBody(
+        stage: stage,
+        on: on,
+        trackColor: switch (stage) {
+          TunnelStage.failed => palette.danger,
+          _ => on ? palette.primary : palette.track,
+        },
+        palette: palette,
+        onTap: () {
+          HapticFeedback.mediumImpact();
+          if (stage.isActive || stage.isBusy) {
+            onDisconnect();
+          } else {
+            onConnect();
+          }
+        },
+      ),
     );
   }
 }
@@ -119,85 +114,4 @@ class _SwitchBody extends StatelessWidget {
       ),
     );
   }
-}
-
-/// Paints the rotating light ring. The animation is driven by an
-/// [AnimationController] owned by a wrapper that rebuilds every frame, so the
-/// painter itself only draws the current frame it is handed.
-class _HaloPainter extends CustomPainter {
-  _HaloPainter({required this.stage});
-
-  final TunnelStage stage;
-
-  static const List<Color> _rainbow = <Color>[
-    Color(0xFFFF1744),
-    Color(0xFFFF9100),
-    Color(0xFFFFEA00),
-    Color(0xFF00E676),
-    Color(0xFF00E5FF),
-    Color(0xFF2979FF),
-    Color(0xFFD500F9),
-    Color(0xFFFF1744),
-  ];
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    final center = Offset(size.width / 2, size.height / 2);
-    final radius = (size.shortestSide / 2) * 0.92;
-    final rect = Rect.fromCircle(center: center, radius: radius);
-
-    // The rotation comes from the system frame clock; keep it deterministic
-    // per frame so the ring always advances while the widget is visible.
-    final t = DateTime.now().millisecondsSinceEpoch / 1000.0;
-    final spin = switch (stage) {
-      TunnelStage.connected => t * 1.6,
-      TunnelStage.connecting => t * 0.9,
-      TunnelStage.validating => t * 0.9,
-      _ => t * 0.35,
-    };
-
-    final sweep = switch (stage) {
-      TunnelStage.connected => 0.75,
-      TunnelStage.connecting => 0.5,
-      TunnelStage.validating => 0.5,
-      _ => 0.28,
-    };
-
-    final alpha = switch (stage) {
-      TunnelStage.connected => 1.0,
-      TunnelStage.connecting => 0.75,
-      TunnelStage.validating => 0.75,
-      TunnelStage.failed => 0.35,
-      _ => 0.5,
-    };
-
-    final paint = Paint()
-      ..style = PaintingStyle.stroke
-      ..strokeWidth = stage.isActive ? 9 : 5
-      ..strokeCap = StrokeCap.round
-      ..shader = SweepGradient(
-        center: Alignment.center,
-        startAngle: spin % (2 * pi),
-        colors: _rainbow.map((Color c) => c.withOpacity(alpha)).toList(),
-      ).createShader(rect);
-
-    canvas.drawArc(rect, spin % (2 * pi), sweep * 2 * pi, false, paint);
-
-    // Soft outer bloom while connected.
-    if (stage.isActive) {
-      final bloom = Paint()
-        ..style = PaintingStyle.stroke
-        ..strokeWidth = 2
-        ..shader = RadialGradient(
-          colors: <Color>[
-            const Color(0xFF00E5FF).withOpacity(0.25),
-            const Color(0x00000000),
-          ],
-        ).createShader(rect.inflate(18));
-      canvas.drawCircle(center, radius + 12, bloom);
-    }
-  }
-
-  @override
-  bool shouldRepaint(_HaloPainter old) => old.stage != stage;
 }

@@ -1,27 +1,27 @@
-import 'dart:ui';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../../data/licence/licence.dart';
+import '../../core/theme/app_theme.dart';
+import '../../core/constants/support_link.dart';
 import '../../data/services/licence_providers.dart';
 import '../../l10n/generated/app_localizations.dart';
-import '../../core/theme/app_theme.dart';
+import '../widgets/rainbow_border_dance.dart';
 
-/// The single support channel. No code, no panel, just the admin's contact.
-const String kSupportLink = 'https://t.me/SasaX60';
-
-/// Shown when the app opens with no active licence. The user types a code
-/// here; support sits under it. Nothing else is reachable from this screen.
+/// The first screen anyone sees. Nothing else in the app is reachable until a
+/// valid subscription code is entered here.
+///
+/// When the user returns after their code ran out, [expired] tells them why:
+/// the same field, but the message explains that the subscription ended and a
+/// new code is needed.
 class LicenceEntryScreen extends ConsumerStatefulWidget {
   const LicenceEntryScreen({super.key, this.expired = false});
 
-  /// True when the user has a code on file that has simply run out.
   final bool expired;
 
   @override
-  ConsumerState<LicenceEntryScreen> createState() => _LicenceEntryScreenState();
+  ConsumerState<LicenceEntryScreen> createState() =>
+      _LicenceEntryScreenState();
 }
 
 class _LicenceEntryScreenState extends ConsumerState<LicenceEntryScreen> {
@@ -29,144 +29,125 @@ class _LicenceEntryScreenState extends ConsumerState<LicenceEntryScreen> {
   bool _busy = false;
   String? _error;
 
-  Future<void> _submit() async {
-    final value = _code.text.trim();
-    if (value.isEmpty) {
-      setState(() => _error = L10n.of(context).licenceEnterCode);
-      return;
-    }
-    setState(() {
-      _busy = true;
-      _error = null;
-    });
-    final ok = await ref.read(currentLicenceProvider.notifier).activate(value);
-    if (!mounted) return;
-    if (!ok) {
-      setState(() {
-        _busy = false;
-        _error = L10n.of(context).licenceInvalid;
-      });
-    }
-    // On success the app-level gate swaps this screen out for the home screen.
-  }
-
   @override
   void dispose() {
     _code.dispose();
     super.dispose();
   }
 
+  Future<void> _activate() async {
+    final value = _code.text.trim();
+    if (value.isEmpty) return;
+
+    setState(() {
+      _busy = true;
+      _error = null;
+    });
+
+    final ok = await ref.read(currentLicenceProvider.notifier).activate(value);
+    if (!mounted) return;
+    setState(() => _busy = false);
+    if (!ok) {
+      setState(() => _error = L10n.of(context).licenceInvalid);
+    }
+  }
+
+  Future<void> _openSupport() async {
+    final uri = Uri.parse(kSupportLink);
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri, mode: LaunchMode.externalApplication);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    final palette = CupertinoColors.systemBackground.resolveFrom(context);
+    final palette = context.palette;
     final l10n = L10n.of(context);
 
     return CupertinoPageScaffold(
-      backgroundColor: palette,
+      backgroundColor: palette.canvas,
       child: SafeArea(
         child: Center(
           child: ConstrainedBox(
-            constraints: const BoxConstraints(maxWidth: 420),
+            constraints: const BoxConstraints(maxWidth: 440),
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24),
+              padding: const EdgeInsets.symmetric(horizontal: 28),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: <Widget>[
                   Icon(
-                    CupertinoIcons.lock_shield_fill,
-                    size: 64,
-                    color: CupertinoColors.activeBlue.resolveFrom(context),
+                    CupertinoIcons.shield_lefthalf_fill,
+                    size: 72,
+                    color: palette.primary,
                   ),
-                  const SizedBox(height: 16),
+                  const SizedBox(height: 18),
                   Text(
-                    l10n.licenceTitle,
+                    l10n.appName.toUpperCase(),
                     textAlign: TextAlign.center,
-                    style: const TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.w700,
-                    ),
+                    textDirection: TextDirection.ltr,
+                    style: AppText.wordmark(palette.label),
                   ),
                   const SizedBox(height: 8),
                   Text(
-                    widget.expired ? l10n.licenceExpired : l10n.licenceSubtitle,
+                    widget.expired
+                        ? l10n.licenceExpiredTitle
+                        : l10n.licenceEntryTitle,
                     textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 14,
-                      color: widget.expired
-                          ? CupertinoColors.destructiveRed.resolveFrom(context)
-                          : context.palette.labelSecondary,
-                    ),
+                    style: AppText.state(palette.labelSecondary),
                   ),
-                  const SizedBox(height: 32),
-                  CupertinoTextField(
-                    controller: _code,
-                    placeholder: l10n.licencePlaceholder,
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 14, vertical: 14),
-                    autocorrect: false,
-                    enableSuggestions: false,
-                    textCapitalization: TextCapitalization.characters,
-                    textAlign: TextAlign.center,
-                    style: const TextStyle(
-                      fontSize: 16,
-                      letterSpacing: 1.2,
-                      fontFeatures: <FontFeature>[
-                        FontFeature.tabularFigures()
-                      ],
+                  const SizedBox(height: 26),
+                  RainbowBorderDance(
+                    active: !_busy,
+                    borderRadius: 16,
+                    borderWidth: 2.5,
+                    glow: true,
+                    padding: const EdgeInsets.all(3),
+                    child: CupertinoTextField(
+                      controller: _code,
+                      placeholder: l10n.licencePlaceholder,
+                      autocorrect: false,
+                      enableSuggestions: false,
+                      textCapitalization: TextCapitalization.characters,
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 16, vertical: 16),
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(
+                        fontSize: 15,
+                        letterSpacing: 0.6,
+                      ),
+                      onSubmitted: (_) => _activate(),
                     ),
-                    onSubmitted: (_) => _submit(),
                   ),
                   if (_error != null) ...<Widget>[
                     const SizedBox(height: 10),
                     Text(
                       _error!,
                       textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 13,
-                        color: CupertinoColors.destructiveRed.resolveFrom(context),
-                      ),
+                      style: AppText.caption(palette.danger),
                     ),
                   ],
-                  const SizedBox(height: 18),
+                  const SizedBox(height: 20),
                   CupertinoButton.filled(
-                    onPressed: _busy ? null : _submit,
+                    onPressed: _busy ? null : _activate,
                     child: _busy
-                        ? const CupertinoActivityIndicator()
+                        ? const CupertinoActivityIndicator(color: CupertinoColors.white)
                         : Text(l10n.licenceActivate),
                   ),
-                  const SizedBox(height: 28),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Icon(
-                        CupertinoIcons.chat_bubble_text,
-                        size: 16,
-                        color: context.palette.labelSecondary,
-                      ),
-                      const SizedBox(width: 6),
-                      Text(
-                        l10n.supportLabel,
-                        style: TextStyle(
-                          fontSize: 13,
-                          color: context.palette.labelSecondary,
+                  const SizedBox(height: 26),
+                  CupertinoButton(
+                    onPressed: _openSupport,
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        Icon(CupertinoIcons.chat_bubble_text, size: 16,
+                            color: palette.primary),
+                        const SizedBox(width: 8),
+                        Text(
+                          l10n.supportChannel,
+                          style: AppText.caption(palette.primary),
                         ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 6),
-                  Center(
-                    child: GestureDetector(
-                      onTap: () => _openSupport(context),
-                      child: Text(
-                        kSupportLink,
-                        style: TextStyle(
-                          fontSize: 15,
-                          fontWeight: FontWeight.w600,
-                          color: CupertinoColors.activeBlue.resolveFrom(context),
-                          decoration: TextDecoration.underline,
-                        ),
-                      ),
+                      ],
                     ),
                   ),
                 ],
@@ -177,21 +158,4 @@ class _LicenceEntryScreenState extends ConsumerState<LicenceEntryScreen> {
       ),
     );
   }
-
-  void _openSupport(BuildContext context) {
-    _launch(kSupportLink);
-  }
-
-  Future<void> _launch(String url) async {
-    final uri = Uri.parse(url);
-    if (await canLaunchUrl(uri)) {
-      await launchUrl(uri, mode: LaunchMode.externalApplication);
-    }
-  }
-}
-
-/// Resolves the active licence for the app-level gate.
-(Licence?, bool) licenceGateOf(WidgetRef ref) {
-  final licence = ref.watch(currentLicenceProvider);
-  return (licence, licence != null && !licence.isExpired);
 }
