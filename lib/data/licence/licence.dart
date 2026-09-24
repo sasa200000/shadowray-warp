@@ -2,9 +2,10 @@ import 'dart:convert';
 import 'dart:typed_data';
 
 import 'package:pointycastle/api.dart' as pc;
+import 'package:pointycastle/asymmetric/api.dart' as asym;
 import 'package:pointycastle/asn1.dart' as asn1;
 import 'package:pointycastle/digests/sha256.dart';
-import 'package:pointycastle/signers/pkcs1.dart';
+import 'package:pointycastle/signers/rsa_signer.dart';
 
 /// Offline, server-free subscription licence.
 ///
@@ -134,12 +135,12 @@ JQIDAQAB
     final message = utf8.encode('${parts.planId}|${parts.devices}|${parts.issuedAt}');
     try {
       final publicKey = _publicKeyFromPem(_publicKeyPem);
-      final signer = PKCS1Signer(SHA256Digest())
-        ..init(false, pc.PublicKeyParameter<pc.RSAPublicKey>(publicKey));
+      final signer = RSASigner(SHA256Digest(), '0609608648016503040201')
+        ..init(false, pc.PublicKeyParameter<asym.RSAPublicKey>(publicKey));
       final sig = base64Url
           .decode(parts.signature + '=' * (-parts.signature.length % 4));
       if (!signer.verifySignature(
-          Uint8List.fromList(message), pc.Signature(sig))) {
+          Uint8List.fromList(message), asym.RSASignature(sig))) {
         return null;
       }
     } catch (_) {
@@ -167,7 +168,7 @@ JQIDAQAB
         issuedAt, match.group(4)!);
   }
 
-  static pc.RSAPublicKey _publicKeyFromPem(String pem) {
+  static asym.RSAPublicKey _publicKeyFromPem(String pem) {
     final lines = pem
         .split(RegExp(r'\r?\n'))
         .where((line) => !line.startsWith('-----'))
@@ -179,6 +180,6 @@ JQIDAQAB
     final keySeq = keyParser.nextObject() as asn1.ASN1Sequence;
     final modulus = (keySeq.elements![0] as asn1.ASN1Integer).value;
     final exponent = (keySeq.elements![1] as asn1.ASN1Integer).value;
-    return pc.RSAPublicKey(modulus, exponent);
+    return asym.RSAPublicKey(modulus, exponent);
   }
 }

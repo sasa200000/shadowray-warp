@@ -2,9 +2,10 @@ import 'dart:convert';
 import 'dart:typed_data';
 
 import 'package:pointycastle/api.dart' as pc;
+import 'package:pointycastle/asymmetric/api.dart' as asym;
 import 'package:pointycastle/asn1.dart' as asn1;
 import 'package:pointycastle/digests/sha256.dart';
-import 'package:pointycastle/signers/pkcs1.dart';
+import 'package:pointycastle/signers/rsa_signer.dart';
 
 import 'licence.dart';
 
@@ -52,14 +53,14 @@ eeqYKHZENFc85dRdOc2bovfUXH9QTL+kY7f/VzmVvI+mYBIWUDNjUg7a/1EHjYUY
     final issuedAt = DateTime.now().millisecondsSinceEpoch ~/ 1000;
     final message = utf8.encode('$planId|$devices|$issuedAt');
     final privateKey = _privateKeyFromPem(_privateKeyPem);
-    final signer = PKCS1Signer(SHA256Digest())
-      ..init(true, pc.PrivateKeyParameter<pc.RSAPrivateKey>(privateKey));
+    final signer = RSASigner(SHA256Digest(), '0609608648016503040201')
+      ..init(true, pc.PrivateKeyParameter<asym.RSAPrivateKey>(privateKey));
     final sig = signer.generateSignature(Uint8List.fromList(message));
     final b64 = base64Url.encode(sig.bytes).replaceAll('=', '');
     return 'SASA-$planId-$devices-$issuedAt-$b64';
   }
 
-  static pc.RSAPrivateKey _privateKeyFromPem(String pem) {
+  static asym.RSAPrivateKey _privateKeyFromPem(String pem) {
     final lines = pem
         .split(RegExp(r'\r?\n'))
         .where((line) => !line.startsWith('-----'))
@@ -75,6 +76,6 @@ eeqYKHZENFc85dRdOc2bovfUXH9QTL+kY7f/VzmVvI+mYBIWUDNjUg7a/1EHjYUY
     final privateExponent = (inner.elements![3] as asn1.ASN1Integer).value;
     final p = (inner.elements![4] as asn1.ASN1Integer).value;
     final q = (inner.elements![5] as asn1.ASN1Integer).value;
-    return pc.RSAPrivateKey(modulus, privateExponent, p, q);
+    return asym.RSAPrivateKey(modulus, privateExponent, p, q);
   }
 }
