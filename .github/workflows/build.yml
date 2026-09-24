@@ -55,6 +55,9 @@ jobs:
           echo "ANDROID_NDK_HOME=$ANDROID_HOME/ndk/$version" >> "$GITHUB_ENV"
           echo "using ndk $version"
 
+      - name: Generate localizations
+        run: flutter gen-l10n
+
       - name: Build arm64 APK
         run: |
           flutter pub get
