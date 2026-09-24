@@ -7,6 +7,7 @@ import 'core/platform/desktop_shell.dart';
 import 'core/theme/app_theme.dart';
 import 'data/services/desktop_tunnel_backend.dart';
 import 'l10n/generated/app_localizations.dart';
+import 'presentation/app_router.dart';
 import 'presentation/providers/app_providers.dart';
 import 'presentation/providers/tunnel_providers.dart';
 import 'presentation/screens/home_screen.dart';
@@ -28,7 +29,7 @@ class ShadowRayApp extends ConsumerWidget {
     };
 
     return CupertinoApp(
-      title: 'ShadowRay',
+      title: 'SasaVPN',
       debugShowCheckedModeBanner: false,
       locale: locale,
       supportedLocales: L10n.supportedLocales,
@@ -88,7 +89,9 @@ class _EntryState extends ConsumerState<_Entry> {
       });
     }
 
-    if (_splashDone) return const HomeScreen();
+    if (_splashDone) {
+      return const AppRouter(child: HomeScreen());
+    }
 
     return SplashScreen(onDone: () => setState(() => _splashDone = true));
   }

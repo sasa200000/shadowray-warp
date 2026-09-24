@@ -1,18 +1,16 @@
-// ignore: unused_import
-import 'package:intl/intl.dart' as intl;
 import 'app_localizations.dart';
 
 // ignore_for_file: type=lint
 
 /// The translations for English (`en`).
 class L10nEn extends L10n {
-  L10nEn([String locale = 'en']) : super(locale);
+  L10nEn() : super('en');
 
   @override
-  String get appName => 'ShadowRay';
+  String get appName => 'SasaVPN';
 
   @override
-  String get appDisplayName => 'ShadowRay';
+  String get appDisplayName => 'SasaVPN';
 
   @override
   String get appTagline => 'Internet for all, or no one';
@@ -21,15 +19,13 @@ class L10nEn extends L10n {
   String get introMeaning => 'Means \"unawareness, ignorance\"';
 
   @override
-  String get introCredit =>
-      'Built through the efforts of #Yousef_Ghobadi and dozens of known and anonymous activists, so that free access to the internet belongs to everyone.';
+  String get introCredit => 'Built through the efforts of #Yousef_Ghobadi and dozens of known and anonymous activists, so that free access to the internet belongs to everyone.';
 
   @override
   String get memorialTitle => 'In memory of those killed on 18 and 19 Dey';
 
   @override
-  String get memorialBody =>
-      'Unarmed people, shot dead by the forces of the Islamic Republic';
+  String get memorialBody => 'Unarmed people, shot dead by the forces of the Islamic Republic';
 
   @override
   String get memorialVow => 'We will not forgive, we will not forget';
@@ -125,23 +121,19 @@ class L10nEn extends L10n {
   String get sectionAdvanced => 'Advanced';
 
   @override
-  String get routingTunnelDescMobile =>
-      'Routes all device traffic through the tunnel';
+  String get routingTunnelDescMobile => 'Routes all device traffic through the tunnel';
 
   @override
-  String get tunnelDegraded =>
-      'Only the local proxy is up, device traffic is not going through the tunnel';
+  String get tunnelDegraded => 'Only the local proxy is up, device traffic is not going through the tunnel';
 
   @override
-  String get tunnelDegradedHint =>
-      'Full tunnel mode needs the app to run with administrator rights';
+  String get tunnelDegradedHint => 'Full tunnel mode needs the app to run with administrator rights';
 
   @override
   String get zeroTrust => 'Organization account';
 
   @override
-  String get zeroTrustDesc =>
-      'Connect with a Cloudflare Zero Trust account instead of a personal one';
+  String get zeroTrustDesc => 'Connect with a Cloudflare Zero Trust account instead of a personal one';
 
   @override
   String get zeroTrustOff => 'Off';
@@ -150,15 +142,13 @@ class L10nEn extends L10n {
   String get zeroTrustTeam => 'Team name';
 
   @override
-  String get zeroTrustTeamDesc =>
-      'The name in your <team>.cloudflareaccess.com address';
+  String get zeroTrustTeamDesc => 'The name in your <team>.cloudflareaccess.com address';
 
   @override
   String get zeroTrustToken => 'Login token';
 
   @override
-  String get zeroTrustTokenDesc =>
-      'Sign in at <team>.cloudflareaccess.com/warp in a browser and paste the token here';
+  String get zeroTrustTokenDesc => 'Sign in at <team>.cloudflareaccess.com/warp in a browser and paste the token here';
 
   @override
   String get zeroTrustServiceToken => 'Service token';
@@ -170,19 +160,16 @@ class L10nEn extends L10n {
   String get zeroTrustClientSecret => 'Client secret';
 
   @override
-  String get zeroTrustGateway =>
-      'Send traffic through the organization gateway';
+  String get zeroTrustGateway => 'Send traffic through the organization gateway';
 
   @override
-  String get zeroTrustGatewayDesc =>
-      'The organization\'s filtering and logging apply. It adds a hop inside the tunnel and your browsing is recorded.';
+  String get zeroTrustGatewayDesc => 'The organization's filtering and logging apply. It adds a hop inside the tunnel and your browsing is recorded.';
 
   @override
   String get zeroTrustReady => 'Ready to connect';
 
   @override
-  String get zeroTrustNeedsToken =>
-      'Add an email address, a login token or a service token';
+  String get zeroTrustNeedsToken => 'Add an email address, a login token or a service token';
 
   @override
   String get zeroTrustSet => 'Set';
@@ -194,8 +181,7 @@ class L10nEn extends L10n {
   String get zeroTrustEmail => 'Email address';
 
   @override
-  String get zeroTrustEmailDesc =>
-      'The simplest way in. Cloudflare emails a one-time code when you connect, and the app asks you for it.';
+  String get zeroTrustEmailDesc => 'The simplest way in. Cloudflare emails a one-time code when you connect, and the app asks you for it.';
 
   @override
   String get zeroTrustSignIn => 'How you sign in';
@@ -204,13 +190,10 @@ class L10nEn extends L10n {
   String get zeroTrustCodeTitle => 'Login code';
 
   @override
-  String zeroTrustCodeBody(String email) {
-    return 'A code was emailed to $email. Enter it to finish signing in.';
-  }
+  String get zeroTrustCodeBody => 'A code was emailed to {email}. Enter it to finish signing in.';
 
   @override
-  String get zeroTrustCodeRetry =>
-      'That code was not accepted. Check your mailbox and try again.';
+  String get zeroTrustCodeRetry => 'That code was not accepted. Check your mailbox and try again.';
 
   @override
   String get zeroTrustCodePlaceholder => 'Code from the email';
@@ -246,15 +229,13 @@ class L10nEn extends L10n {
   String get ruleDirect => 'Skip the tunnel';
 
   @override
-  String get ruleDirectDesc =>
-      'These open through your own connection instead of the tunnel';
+  String get ruleDirectDesc => 'These open through your own connection instead of the tunnel';
 
   @override
   String get ruleNone => 'Empty';
 
   @override
-  String get ruleHint =>
-      'One address per line. A site name, an IP address or a port number all work.';
+  String get ruleHint => 'One address per line. A site name, an IP address or a port number all work.';
 
   @override
   String get sectionApp => 'App';
@@ -263,8 +244,7 @@ class L10nEn extends L10n {
   String get protocolMasque => 'MASQUE';
 
   @override
-  String get protocolMasqueDesc =>
-      'Modern QUIC/HTTP-3 transport, best on healthy networks';
+  String get protocolMasqueDesc => 'Modern QUIC/HTTP-3 transport, best on healthy networks';
 
   @override
   String get protocolWireGuard => 'WireGuard';
@@ -285,15 +265,13 @@ class L10nEn extends L10n {
   String get transportH3 => 'HTTP/3 over QUIC';
 
   @override
-  String get transportH3Desc =>
-      'Faster, but your network has to leave UDP open';
+  String get transportH3Desc => 'Faster, but your network has to leave UDP open';
 
   @override
   String get transportH2 => 'HTTP/2 over TCP';
 
   @override
-  String get transportH2Desc =>
-      'Looks like an ordinary website. Pick this when UDP is blocked';
+  String get transportH2Desc => 'Looks like an ordinary website. Pick this when UDP is blocked';
 
   @override
   String get scanMode => 'Scan mode';
@@ -326,8 +304,7 @@ class L10nEn extends L10n {
   String get scanIronclad => 'Ironclad';
 
   @override
-  String get scanIroncladDesc =>
-      'Opens a real tunnel and runs a real HTTP check per candidate';
+  String get scanIroncladDesc => 'Opens a real tunnel and runs a real HTTP check per candidate';
 
   @override
   String get obfuscation => 'Obfuscation';
@@ -348,8 +325,7 @@ class L10nEn extends L10n {
   String get endpoint => 'Server';
 
   @override
-  String get endpointDesc =>
-      'Type a server if you want a specific one, or leave it empty and it will find one';
+  String get endpointDesc => 'Type a server if you want a specific one, or leave it empty and it will find one';
 
   @override
   String get endpointAuto => 'Automatic';
@@ -394,8 +370,7 @@ class L10nEn extends L10n {
   String get splitTunnelDisabled => 'Disabled';
 
   @override
-  String get splitTunnelDisabledDesc =>
-      'All app traffic goes through the tunnel';
+  String get splitTunnelDisabledDesc => 'All app traffic goes through the tunnel';
 
   @override
   String get splitTunnelBlacklist => 'Bypass selected';
@@ -413,8 +388,7 @@ class L10nEn extends L10n {
   String get fragment => 'Send in pieces';
 
   @override
-  String get fragmentDesc =>
-      'Breaks the start of the connection into pieces so filtering cannot recognise it';
+  String get fragmentDesc => 'Breaks the start of the connection into pieces so filtering cannot recognise it';
 
   @override
   String get logLevel => 'Log level';
@@ -456,8 +430,7 @@ class L10nEn extends L10n {
   String get quickReconnect => 'Quick reconnect';
 
   @override
-  String get quickReconnectDesc =>
-      'Retry the last working gateway before a full rescan';
+  String get quickReconnectDesc => 'Retry the last working gateway before a full rescan';
 
   @override
   String get resetSettings => 'Reset settings';
@@ -469,8 +442,7 @@ class L10nEn extends L10n {
   String get resetConfirmTitle => 'Reset settings?';
 
   @override
-  String get resetConfirmBody =>
-      'All preferences go back to their default values. Your saved identity is kept.';
+  String get resetConfirmBody => 'All preferences go back to their default values. Your saved identity is kept.';
 
   @override
   String get cancel => 'Cancel';
@@ -488,15 +460,13 @@ class L10nEn extends L10n {
   String get clearLogs => 'Clear logs';
 
   @override
-  String get logsEmpty =>
-      'No logs yet. Connect once and they will show up here.';
+  String get logsEmpty => 'No logs yet. Connect once and they will show up here.';
 
   @override
   String get copiedToClipboard => 'Copied to clipboard';
 
   @override
-  String get aboutBody =>
-      'ShadowRay is a free and open source app for reaching the internet without censorship. It costs nothing, and selling it or using it commercially is not allowed.';
+  String get aboutBody => 'SasaVPN connects you to the internet through Cloudflare WARP. The tunnel engine is the open source Aether core, which routes traffic over MASQUE and WireGuard.';
 
   @override
   String get aboutCore => 'Core engine';
@@ -511,16 +481,13 @@ class L10nEn extends L10n {
   String get aboutLicense => 'License';
 
   @override
-  String get vpnPermissionNeeded =>
-      'VPN permission is required to route your traffic';
+  String get vpnPermissionNeeded => 'VPN permission is required to route your traffic';
 
   @override
-  String get vpnPermissionDenied =>
-      'Permission denied, the tunnel cannot start';
+  String get vpnPermissionDenied => 'Permission denied, the tunnel cannot start';
 
   @override
-  String get connectionFailedRetry =>
-      'Could not establish a tunnel. Try another protocol or scan mode.';
+  String get connectionFailedRetry => 'Could not establish a tunnel. Try another protocol or scan mode.';
 
   @override
   String get exitConfirm => 'Press back again to exit';
@@ -553,8 +520,7 @@ class L10nEn extends L10n {
   String get ech => 'Hide the site name';
 
   @override
-  String get echDesc =>
-      'Keeps the name of the site you open hidden from the network';
+  String get echDesc => 'Keeps the name of the site you open hidden from the network';
 
   @override
   String get fragmentSize => 'Fragment size';
@@ -575,36 +541,31 @@ class L10nEn extends L10n {
   String get dataCheck => 'Check data really flows';
 
   @override
-  String get dataCheckDesc =>
-      'Do not say connected until real data has gone through';
+  String get dataCheckDesc => 'Do not say connected until real data has gone through';
 
   @override
   String get validateSeconds => 'Check timeout';
 
   @override
-  String get validateSecondsDesc =>
-      'How many seconds to wait before deciding the tunnel works';
+  String get validateSecondsDesc => 'How many seconds to wait before deciding the tunnel works';
 
   @override
   String get reconnectSeconds => 'Reconnect delay';
 
   @override
-  String get reconnectSecondsDesc =>
-      'How long to wait after a drop before trying again';
+  String get reconnectSecondsDesc => 'How long to wait after a drop before trying again';
 
   @override
   String get wgKeepalive => 'Keep-alive interval';
 
   @override
-  String get wgKeepaliveDesc =>
-      'Send a small packet every few seconds so the connection stays open';
+  String get wgKeepaliveDesc => 'Send a small packet every few seconds so the connection stays open';
 
   @override
   String get wgProfileRetry => 'Retry other profiles';
 
   @override
-  String get wgProfileRetryDesc =>
-      'Try other obfuscation profiles while scanning';
+  String get wgProfileRetryDesc => 'Try other obfuscation profiles while scanning';
 
   @override
   String get tabHome => 'Shield';
@@ -625,8 +586,7 @@ class L10nEn extends L10n {
   String get aboutCredits => 'Built on';
 
   @override
-  String get aboutFooter =>
-      'ShadowRay is the app by bepass-org. The tunnel engine is Aether by Cluvex Studio.';
+  String get aboutFooter => 'SasaVPN is built on ShadowRay. The tunnel engine is Aether by Cluvex Studio.';
 
   @override
   String get connectAction => 'Connect';
@@ -650,8 +610,7 @@ class L10nEn extends L10n {
   String get tunnelMtu => 'MTU';
 
   @override
-  String get tunnelMtuDesc =>
-      'Packet size. Lower it if the connection feels slow';
+  String get tunnelMtuDesc => 'Packet size. Lower it if the connection feels slow';
 
   @override
   String get tunnelDeviceState => 'Device state';
@@ -711,8 +670,7 @@ class L10nEn extends L10n {
   String get trayStageActive => 'Connected';
 
   @override
-  String get fragmentNeedsHttp2 =>
-      'Switches the transport to HTTP/2, the only one that carries a TLS ClientHello';
+  String get fragmentNeedsHttp2 => 'Switches the transport to HTTP/2, the only one that carries a TLS ClientHello';
 
   @override
   String get transportUdp => 'UDP';
@@ -724,8 +682,7 @@ class L10nEn extends L10n {
   String get dnsOverride => 'Tunnel the resolver';
 
   @override
-  String get dnsOverrideDesc =>
-      'Sends DNS through the tunnel instead of your ISP resolver';
+  String get dnsOverrideDesc => 'Sends DNS through the tunnel instead of your ISP resolver';
 
   @override
   String get dnsServers => 'Resolver addresses';
@@ -752,9 +709,7 @@ class L10nEn extends L10n {
   String get trafficUnprotected => 'your traffic is not protected';
 
   @override
-  String sinceLabel(String time) {
-    return 'since $time';
-  }
+  String get sinceLabel => 'since {time}';
 
   @override
   String get exitNode => 'Exit node';
@@ -784,9 +739,7 @@ class L10nEn extends L10n {
   String get mapExit => 'Exit';
 
   @override
-  String settingsSubtitle(String version) {
-    return 'Aether core · $version';
-  }
+  String get settingsSubtitle => 'Aether core · {version}';
 
   @override
   String get fullTunnelDesc => 'Route every app, not just the SOCKS5 port';
@@ -810,37 +763,31 @@ class L10nEn extends L10n {
   String get aboutHevDesc => 'the tun device that carries your packets';
 
   @override
-  String aboutAppSummary(String app, String core) {
-    return 'app $app · core aether $core';
-  }
+  String get aboutAppSummary => 'app {app} · core aether {core}';
 
   @override
   String get introHeadline => 'Private by default';
 
   @override
-  String get introBody =>
-      'ShadowRay routes your traffic through the Aether core, so the network you are on cannot read or shape it.';
+  String get introBody => 'ShadowRay routes your traffic through the Aether core, so the network you are on cannot read or shape it.';
 
   @override
   String get introFeatureTunnelTitle => 'MASQUE over QUIC';
 
   @override
-  String get introFeatureTunnelBody =>
-      'A tunnel that looks like ordinary HTTPS traffic.';
+  String get introFeatureTunnelBody => 'A tunnel that looks like ordinary HTTPS traffic.';
 
   @override
   String get introFeatureAccountTitle => 'Nothing to sign up for';
 
   @override
-  String get introFeatureAccountBody =>
-      'A dedicated identity is provisioned on first launch.';
+  String get introFeatureAccountBody => 'A dedicated identity is provisioned on first launch.';
 
   @override
   String get introFeatureControlTitle => 'Choose what goes through';
 
   @override
-  String get introFeatureControlBody =>
-      'Split tunnel, custom resolver, per protocol control.';
+  String get introFeatureControlBody => 'Split tunnel, custom resolver, per protocol control.';
 
   @override
   String get introGetStarted => 'Get started';
@@ -849,13 +796,10 @@ class L10nEn extends L10n {
   String get introFooter => 'Free and open source · GPL-3.0';
 
   @override
-  String get splitHeaderSubtitle =>
-      'Apps listed here bypass the tunnel entirely';
+  String get splitHeaderSubtitle => 'Apps listed here bypass the tunnel entirely';
 
   @override
-  String splitBypassCount(String count) {
-    return '$count apps bypass the tunnel';
-  }
+  String get splitBypassCount => '{count} apps bypass the tunnel';
 
   @override
   String get apply => 'Apply';
@@ -870,19 +814,16 @@ class L10nEn extends L10n {
   String get routingSocks => 'SOCKS5 only';
 
   @override
-  String get routingSocksDesc =>
-      'Only apps you point at the local port go through the tunnel';
+  String get routingSocksDesc => 'Only apps you point at the local port go through the tunnel';
 
   @override
   String get routingSystem => 'System proxy';
 
   @override
-  String get routingSystemDesc =>
-      'Sets the desktop proxy for every app, no admin rights needed';
+  String get routingSystemDesc => 'Sets the desktop proxy for every app, no admin rights needed';
 
   @override
-  String get routingTunnelDesc =>
-      'Routes every packet of the device, needs administrator rights';
+  String get routingTunnelDesc => 'Routes every packet of the device, needs administrator rights';
 
   @override
   String get chipSystemProxy => 'System proxy';
@@ -900,13 +841,89 @@ class L10nEn extends L10n {
   String get notificationChannelName => 'Tunnel status';
 
   @override
-  String get notificationChannelDesc =>
-      'Shows whether the tunnel is up and lets you disconnect';
+  String get notificationChannelDesc => 'Shows whether the tunnel is up and lets you disconnect';
 
   @override
   String get notificationPermissionTitle => 'Allow notifications';
 
   @override
-  String get notificationPermissionBody =>
-      'ShadowRay needs a notification to keep the tunnel alive in the background';
+  String get notificationPermissionBody => 'ShadowRay needs a notification to keep the tunnel alive in the background';
+
+  @override
+  String get licenceTitle => 'Subscription code';
+
+  @override
+  String get licenceSubtitle => 'Enter your subscription code to open the app';
+
+  @override
+  String get licenceExpired => 'Your subscription code has expired. Get a new one';
+
+  @override
+  String get licenceEnterCode => 'Enter your subscription code';
+
+  @override
+  String get licencePlaceholder => 'SASA-…';
+
+  @override
+  String get licenceActivate => 'Activate and continue';
+
+  @override
+  String get licenceInvalid => 'That subscription code is not valid';
+
+  @override
+  String get supportLabel => 'Support';
+
+  @override
+  String get adminTitle => 'Admin panel';
+
+  @override
+  String get adminLockPrompt => 'Type the lock code to open the admin panel';
+
+  @override
+  String get adminLockPlaceholder => 'Lock code';
+
+  @override
+  String get adminUnlock => 'Unlock';
+
+  @override
+  String get adminLockWrong => 'Wrong lock code';
+
+  @override
+  String get adminLockTooShort => 'The lock code must be at least 6 characters';
+
+  @override
+  String get adminLockChanged => 'Lock code changed';
+
+  @override
+  String get adminGenerate => 'Generate a subscription code';
+
+  @override
+  String get adminPlan => 'Plan length';
+
+  @override
+  String get adminDevices => 'Number of users (devices)';
+
+  @override
+  String get adminDeviceUnit => 'user';
+
+  @override
+  String get adminGenerateButton => 'Generate code';
+
+  @override
+  String get adminCodeReady => 'Code ready — copy it';
+
+  @override
+  String get adminHistory => 'Codes you have generated';
+
+  @override
+  String get adminHistoryEmpty => 'No codes generated yet';
+
+  @override
+  String get adminChangeLock => 'Change the panel lock code';
+
+  @override
+  String get adminNewLockPlaceholder => 'New lock code';
+
+  @override
+  String get adminChangeLockButton => 'Change lock code';
 }

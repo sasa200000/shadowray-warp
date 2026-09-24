@@ -1,4 +1,4 @@
-name: Build ShadowRay Warp APK
+name: Build SasaVPN APK
 
 on:
   workflow_dispatch:
@@ -55,14 +55,14 @@ jobs:
           echo "ANDROID_NDK_HOME=$ANDROID_HOME/ndk/$version" >> "$GITHUB_ENV"
           echo "using ndk $version"
 
-      - name: Build arm64 APK (split per ABI, smaller download)
+      - name: Build arm64 APK
         run: |
           flutter pub get
-          flutter build apk --debug --target-platform android-arm64 --split-per-abi
+          flutter build apk --release --target-platform android-arm64 --split-per-abi
 
       - name: Verify the core is bundled
         run: |
-          apk=build/app/outputs/flutter-apk/app-arm64-v8a-debug.apk
+          apk=build/app/outputs/flutter-apk/app-arm64-v8a-release.apk
           if ! unzip -l "$apk" | grep -q 'lib/arm64-v8a/libaether.so'; then
             echo "::error::the apk carries no aether core"
             unzip -l "$apk" | grep 'lib/' || true
@@ -72,12 +72,19 @@ jobs:
 
       - name: Rename APK
         run: |
-          cp build/app/outputs/flutter-apk/app-arm64-v8a-debug.apk ShadowRay-arm64-v1.1.apk
-          ls -la ShadowRay-arm64-v1.1.apk
+          cp build/app/outputs/flutter-apk/app-arm64-v8a-release.apk SasaVPN-arm64-v1.0.apk
+          ls -la SasaVPN-arm64-v1.0.apk
 
       - name: Upload APK artifact
         uses: actions/upload-artifact@v4
         with:
-          name: ShadowRay-Warp-arm64
-          path: ShadowRay-arm64-v1.1.apk
-          retention-days: 30
+          name: SasaVPN-arm64
+          path: SasaVPN-arm64-v1.0.apk
+          retention-days: 90
+
+      - name: Attach to the latest release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v1.0
+          name: SasaVPN v1.0
+          files: SasaVPN-arm64-v1.0.apk

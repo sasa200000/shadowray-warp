@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../core/platform/desktop_shell.dart';
 import '../../core/theme/app_theme.dart';
@@ -8,10 +9,14 @@ import '../../data/models/tunnel_status.dart';
 import '../../l10n/generated/app_localizations.dart';
 import '../providers/tunnel_providers.dart';
 import '../widgets/connect_switch.dart';
+import '../widgets/edge_light_dance.dart';
 import '../widgets/flag_icon.dart';
+import '../widgets/live_traffic_strip.dart';
 import '../widgets/login_code_dialog.dart';
 import '../widgets/screen_header.dart';
 import 'about_screen.dart';
+import 'admin_panel_screen.dart';
+import 'licence_entry_screen.dart';
 import 'logs_screen.dart';
 import 'settings_screen.dart';
 
@@ -57,6 +62,13 @@ class HomeScreen extends ConsumerWidget {
     );
   }
 
+  Future<void> _openSupport() async {
+    final uri = Uri.parse(kSupportLink);
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri, mode: LaunchMode.externalApplication);
+    }
+  }
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final palette = context.palette;
@@ -77,29 +89,38 @@ class HomeScreen extends ConsumerWidget {
 
     return CupertinoPageScaffold(
       backgroundColor: palette.canvas,
-      child: SafeArea(
-        child: Column(
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(8, 4, 8, 0),
-              child: Row(
-                children: <Widget>[
-                  IconButtonPlain(
-                    icon: CupertinoIcons.info_circle,
-                    onTap: () => _open(context, const AboutScreen()),
-                  ),
-                  const Spacer(),
-                  IconButtonPlain(
-                    icon: CupertinoIcons.doc_text,
-                    onTap: () => _open(context, const LogsScreen()),
-                  ),
-                  IconButtonPlain(
-                    icon: CupertinoIcons.settings,
-                    onTap: () => _open(context, const SettingsScreen()),
-                  ),
-                ],
+      child: EdgeLightDance(
+        child: SafeArea(
+          child: Column(
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsetsDirectional.fromSTEB(8, 4, 8, 0),
+                child: Row(
+                  children: <Widget>[
+                    IconButtonPlain(
+                      icon: CupertinoIcons.info_circle,
+                      onTap: () => _open(context, const AboutScreen()),
+                    ),
+                    const Spacer(),
+                    IconButtonPlain(
+                      icon: CupertinoIcons.chat_bubble_text,
+                      onTap: _openSupport,
+                    ),
+                    IconButtonPlain(
+                      icon: CupertinoIcons.shield_lefthalf_fill,
+                      onTap: () => _open(context, const AdminPanelScreen()),
+                    ),
+                    IconButtonPlain(
+                      icon: CupertinoIcons.doc_text,
+                      onTap: () => _open(context, const LogsScreen()),
+                    ),
+                    IconButtonPlain(
+                      icon: CupertinoIcons.settings,
+                      onTap: () => _open(context, const SettingsScreen()),
+                    ),
+                  ],
+                ),
               ),
-            ),
             Expanded(
               child: Center(
                 child: ConstrainedBox(
@@ -139,6 +160,8 @@ class HomeScreen extends ConsumerWidget {
                         height: 44,
                         child: _Detail(status: status, geo: geo),
                       ),
+                      const SizedBox(height: 14),
+                      LiveTrafficStrip(status: status),
                       if (degraded)
                         Padding(
                           padding: const EdgeInsets.symmetric(
@@ -169,7 +192,8 @@ class HomeScreen extends ConsumerWidget {
           ],
         ),
       ),
-    );
+    ),
+  );
   }
 }
 

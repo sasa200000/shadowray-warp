@@ -17,7 +17,7 @@
     <uses-feature android:name="android.hardware.faketouch" android:required="false" />
 
     <application
-        android:label="ShadowRay"
+        android:label="SasaVPN"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher"
         android:extractNativeLibs="true"
