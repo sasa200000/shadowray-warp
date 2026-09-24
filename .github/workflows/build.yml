@@ -85,7 +85,10 @@ jobs:
           path: SasaVPN-arm64-v1.0.apk
           retention-days: 90
 
+      # The token used for pushes has no release scope, so the APK is delivered
+      # as a workflow artifact. The release step is best-effort only.
       - name: Attach to the latest release
+        continue-on-error: true
         uses: softprops/action-gh-release@v2
         with:
           tag_name: v1.0
