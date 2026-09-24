@@ -7,6 +7,7 @@ import '../../core/platform/desktop_shell.dart';
 import '../../core/theme/app_theme.dart';
 import '../../data/models/geo_endpoint.dart';
 import '../../data/models/tunnel_status.dart';
+import '../../data/services/licence_providers.dart';
 import '../../l10n/generated/app_localizations.dart';
 import '../providers/tunnel_providers.dart';
 import '../widgets/connect_switch.dart';
